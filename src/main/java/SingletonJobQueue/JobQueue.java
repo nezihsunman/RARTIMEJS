@@ -11,7 +11,6 @@ public class JobQueue<J> extends PriorityQueue<J> {
     }
 
     synchronized public static JobQueue getInstance() {
-        //TODO: Could be replaced with template behavioral pattern.
         if (instance == null) {
             instance = new JobQueue();
         }

@@ -5,7 +5,6 @@ import main.java.SingletonJobQueue.JobQueue;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mock;
 
 public class PriorityQueueTests {
     @Test
