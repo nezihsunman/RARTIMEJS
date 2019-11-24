@@ -1,11 +1,12 @@
-package SingletonJobQueue;
+package main.java.SingletonJobQueue;
 
 import java.util.PriorityQueue;
 
-public class JobQueue {
-    private static JobQueue instance;
+public class JobQueue<J> extends PriorityQueue<J> {
+
+    private static JobQueue<AbstractJob> instance;
+
     private JobQueue() {
-        PriorityQueue<AbstractJob> pq = new PriorityQueue<AbstractJob>(5, new JobComparator());
         //constructor
     }
 
