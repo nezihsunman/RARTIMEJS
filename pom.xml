@@ -6,7 +6,7 @@
 
     <groupId>com.cs534.rartimejs</groupId>
     <artifactId>rartimejs</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
 
 
 </project>
