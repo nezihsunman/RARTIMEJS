@@ -1,7 +1,7 @@
 package main.java.AbstractJobFactory;
 
-import main.java.SingletonJobQueue.AbstractJob;
+import main.java.Jobs.AbstractJobs;
 
 public interface AbstractJobFactory {
-    AbstractJob getJob();
+    AbstractJobs getJob(int cpu, int ram, int jobtime);
 }
