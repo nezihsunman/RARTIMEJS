@@ -15,6 +15,7 @@ public class FindMaxJobs extends AbstractJobs {
     public void notifyNodes() {
         //todo: this will be removed after implement observer
     }
+    @Override
     public int getCore() {
         return core;
     }
