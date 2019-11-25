@@ -1,21 +1,31 @@
 package main.java.Jobs;
 
-public class SortingJobs extends AbstractJobs {
+public class FindMaxJob extends AbstractJob {
     private int core;
     private int ram;
     private int jobTime;
 
-    public SortingJobs(int core, int ram, int jobTime) {
+    public FindMaxJob(int core, int ram, int jobTime) {
         this.core = core;
         this.ram = ram;
         this.jobTime = jobTime;
     }
 
     @Override
+    public void addJob() {
+
+    }
+
+    @Override
+    public void removeJob() {
+
+    }
+
+    @Override
     public void notifyNodes() {
         //todo: this will be removed after implement observer
     }
-
+    @Override
     public int getCore() {
         return core;
     }

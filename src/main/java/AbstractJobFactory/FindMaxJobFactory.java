@@ -1,13 +1,12 @@
 package main.java.AbstractJobFactory;
 
-import main.java.Jobs.AbstractJobs;
-import main.java.Jobs.FindMaxJobs;
-import main.java.SingletonJobQueue.AbstractJob;
+import main.java.Jobs.AbstractJob;
+import main.java.Jobs.FindMaxJob;
 
 public class FindMaxJobFactory implements AbstractJobFactory {
     @Override
-    public AbstractJobs getJob(int core, int ram, int jobtime) {
-        return new FindMaxJobs(core, ram, jobtime);
+    public AbstractJob getJob(int core, int ram, int jobtime) {
+        return new FindMaxJob(core, ram, jobtime);
     }
 
     public void createRandomFindMaxJob() {
