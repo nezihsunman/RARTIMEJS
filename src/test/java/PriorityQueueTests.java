@@ -22,22 +22,15 @@ public class PriorityQueueTests {
     @Test
     public void test_Should_Remove_Lowest_Priority() {
         JobQueue singletonQueue = JobQueue.getInstance();
-        int cpu1=1;
-        int ram1=16;
-        int jobTime1=10;
-
-        int ram2=32;
-        int cpu2=2;
-        int jobTime2=20;
 
         AbstractJobFactory jf_max = new FindMaxJobFactory();
         AbstractJobFactory jf_sort = new SortingJobFactory();
 
-        AbstractJob maxJob = jf_max.getJob(cpu1,ram1,jobTime1);
-        AbstractJob sortJob = jf_sort.getJob(cpu2,ram2,jobTime2);
+        AbstractJob maxJob = jf_max.getJob(1 , 16, 10);
+        AbstractJob sortJob = jf_sort.getJob(32,2, 20);
 
-        maxJob.setPriority(jobTime1);
-        sortJob.setPriority(jobTime2);
+        maxJob.setPriority(10);
+        sortJob.setPriority(20);
 
         singletonQueue.add(maxJob);
         singletonQueue.add(sortJob);

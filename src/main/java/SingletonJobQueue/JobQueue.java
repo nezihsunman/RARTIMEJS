@@ -1,6 +1,7 @@
 package main.java.SingletonJobQueue;
 
 import java.util.PriorityQueue;
+import main.java.Jobs.AbstractJob;
 
 public class JobQueue<J> extends PriorityQueue<J> {
 

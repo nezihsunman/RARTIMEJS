@@ -2,6 +2,8 @@ package main.java.Jobs;
 
 public abstract class AbstractJob implements Comparable<AbstractJob>{
     private int priority;
+    //TODO: will probably replaced with enum
+    private String status;
 
 
     public int getPriority() {
@@ -10,6 +12,14 @@ public abstract class AbstractJob implements Comparable<AbstractJob>{
 
     public void setPriority(int p) {
         this.priority = p;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String s) {
+        this.status = s;
     }
 
     @Override

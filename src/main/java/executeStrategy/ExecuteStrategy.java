@@ -1,4 +1,4 @@
-package main.java.execudeStrategy;
+package main.java.executeStrategy;
 
 public interface ExecuteStrategy {
     //todo: this pattern have to use with ExecudeStrategy executeStrategy;
