@@ -34,4 +34,9 @@ public class FindMaxJob extends AbstractJob {
     public int getSize() {
         return this.list.size();
     }
+
+    @Override
+    public String toString() {
+        return "Type: FindMaxJob, Size: " + getSize() + ", Status: " + getStatus();
+    }
 }

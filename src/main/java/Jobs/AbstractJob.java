@@ -1,7 +1,7 @@
 package main.java.Jobs;
 
 //public abstract class AbstractJob implements Comparable<AbstractJob>{
-public abstract class AbstractJob {
+public abstract class AbstractJob implements Comparable<AbstractJob> {
 //    private String status;
 //    private int priority;
     //TODO: will probably replaced with enum
@@ -27,19 +27,19 @@ public abstract class AbstractJob {
 //    }
 
 
-//    @Override
-//    //pop lowest priority first
-//    public int compareTo(AbstractJob j) {
-//        if (this.getPriority() > j.getPriority()) {
-//            return 1;
-//        }
-//
-//        else if (this.getPriority() < j.getPriority()) {
-//            return -1;
-//        }
-//
-//        return 0;
-//    }
+    @Override
+    //pop lowest priority first
+    public int compareTo(AbstractJob j) {
+        if (this.getSize() > j.getSize()) {
+            return 1;
+        }
+
+        else if (this.getSize() < j.getSize()) {
+            return -1;
+        }
+
+        return 0;
+    }
 
 //    public abstract void addJob();
 //    public abstract void removeJob ();

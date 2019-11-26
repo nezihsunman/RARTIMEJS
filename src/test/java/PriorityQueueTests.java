@@ -3,6 +3,7 @@ package test.java;
 import main.java.AbstractJobFactory.AbstractJobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 //import main.java.AbstractJobFactory.SortingJobFactory;
+import main.java.AbstractJobFactory.SortingJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
@@ -21,6 +22,17 @@ public class PriorityQueueTests {
 
     @Test
     public void test_Should_Remove_Lowest_Priority() {
+        JobQueue singletonQueue = JobQueue.getInstance();
+
+        AbstractJobFactory jf_max = new FindMaxJobFactory();
+        AbstractJobFactory jf_sort = new SortingJobFactory();
+
+        AbstractJob maxJob = jf_max.getJob(2);
+        AbstractJob sortJob = jf_sort.getJob(3);
+
+
+
+//        Assert.assertEquals(singletonQueue.remove(), maxJob);
 
     }
 }
