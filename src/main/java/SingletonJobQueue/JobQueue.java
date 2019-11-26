@@ -2,8 +2,9 @@ package main.java.SingletonJobQueue;
 
 import java.util.PriorityQueue;
 import main.java.Jobs.AbstractJob;
+import main.java.Node.Observer_o;
 
-public class JobQueue<J> extends PriorityQueue<J> {
+public class JobQueue<J> extends PriorityQueue<J> implements Observer_o {
 
     private static JobQueue<AbstractJob> instance;
 
@@ -17,6 +18,11 @@ public class JobQueue<J> extends PriorityQueue<J> {
         }
 
         return instance;
+    }
+
+    @Override
+    public void update(AbstractJob job) {
+
     }
 }
 

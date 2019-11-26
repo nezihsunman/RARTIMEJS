@@ -5,15 +5,15 @@ import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.List;
 
-public class Node implements Observer{
+public class Node_o implements Observer_o {
     private int core;
     private int ram;
 
     // not sure if they need to be public
-    public List<Observer> nodes;
+    public List<Observer_o> nodes;
     private JobQueue jobQueue = JobQueue.getInstance();
 
-    public Node(int core, int ram) {
+    public Node_o(int core, int ram) {
         this.core = core;
         this.ram = ram;
 

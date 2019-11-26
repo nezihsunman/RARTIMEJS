@@ -21,21 +21,6 @@ public class PriorityQueueTests {
 
     @Test
     public void test_Should_Remove_Lowest_Priority() {
-        JobQueue singletonQueue = JobQueue.getInstance();
-
-        AbstractJobFactory jf_max = new FindMaxJobFactory();
-//        AbstractJobFactory jf_sort = new SortingJobFactory();
-
-//        AbstractJob maxJob = jf_max.getJob(1 , 16, 10);
-//        AbstractJob sortJob = jf_sort.getJob(32,2, 20);
-//
-//        maxJob.setPriority(jobTime1);
-//        sortJob.setPriority(jobTime2);
-//
-//        singletonQueue.add(maxJob);
-//        singletonQueue.add(sortJob);
-
-//        Assert.assertEquals(singletonQueue.remove(), maxJob);
 
     }
 }

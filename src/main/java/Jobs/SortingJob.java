@@ -1,52 +1,39 @@
 package main.java.Jobs;
 
-//public class SortingJob extends AbstractJob {
-//    private int core;
-//    private int ram;
-//    private int jobTime;
-//
-//    public SortingJob(int core, int ram, int jobTime) {
-//        this.core = core;
-//        this.ram = ram;
-//        this.jobTime = jobTime;
-//    }
-//
-//    @Override
-//    public void addJob() {
-//
-//    }
-//
-//    @Override
-//    public void removeJob() {
-//
-//    }
-//
-//    @Override
-//    public void notifyNodes() {
-//        //todo: this will be removed after implement observer
-//    }
-//
-//    public int getCore() {
-//        return core;
-//    }
-//
-//    public void setCore(int core) {
-//        this.core = core;
-//    }
-//
-//    public int getRam() {
-//        return ram;
-//    }
-//
-//    public void setRam(int ram) {
-//        this.ram = ram;
-//    }
-//
-//    public int getJobTime() {
-//        return jobTime;
-//    }
-//
-//    public void setJobTime(int jobTime) {
-//        this.jobTime = jobTime;
-//    }
-//}
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class SortingJob extends AbstractJob {
+    //TODO will be replaced with enum
+    private boolean status = false;
+    private ArrayList<Integer> list;
+
+    // random size array generation in the constructor.
+    // could use a different data structure for benefitting from the
+    //abstract factory more.
+    public SortingJob(int size) {
+        list = new ArrayList<Integer>(size);
+        Random random = new Random();
+
+        for (int i = 0; i < size; i++)
+        {
+            list.add(random.nextInt(1000));
+        }
+    }
+
+    @Override
+    public boolean getStatus() {
+        return this.status;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public int getSize() {
+        return this.list.size();
+    }
+}
