@@ -38,7 +38,7 @@ public class Node implements Observer{
 
     @Override
     public void update(AbstractJob job) {
-        job.setStatus("Completed");
+//        job.setStatus("Completed");
 
     }
 }

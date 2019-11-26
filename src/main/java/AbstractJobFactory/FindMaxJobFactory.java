@@ -5,13 +5,7 @@ import main.java.Jobs.FindMaxJob;
 
 public class FindMaxJobFactory implements AbstractJobFactory {
     @Override
-    public AbstractJob getJob(int core, int ram, int jobtime) {
-        return new FindMaxJob(core, ram, jobtime);
+    public AbstractJob getJob(int size) {
+        return new FindMaxJob(size);
     }
-
-    public void createRandomFindMaxJob() {
-
-    }
-
-
 }
