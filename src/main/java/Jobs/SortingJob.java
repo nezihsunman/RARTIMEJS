@@ -4,7 +4,7 @@ package main.java.Jobs;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SortingJob extends AbstractJob {
+public class SortingJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
     private boolean status = false;
     private ArrayList<Integer> list;
@@ -20,6 +20,16 @@ public class SortingJob extends AbstractJob {
         {
             list.add(random.nextInt(1000));
         }
+    }
+
+    @Override
+    public void putMessage() throws InterruptedException {
+
+    }
+
+    @Override
+    public ArrayList<Integer> getMessage() throws InterruptedException {
+        return null;
     }
 
     @Override

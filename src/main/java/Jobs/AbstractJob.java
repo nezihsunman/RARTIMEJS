@@ -1,14 +1,18 @@
 package main.java.Jobs;
 
+import java.util.ArrayList;
+
 //public abstract class AbstractJob implements Comparable<AbstractJob>{
-public abstract class AbstractJob implements Comparable<AbstractJob> {
+public abstract class AbstractJob extends Thread implements Comparable<AbstractJob> {
 //    private String status;
 //    private int priority;
     //TODO: will probably replaced with enum
-
+    public abstract void putMessage() throws InterruptedException;
+    public abstract ArrayList<Integer> getMessage() throws InterruptedException;
     public abstract boolean getStatus();
     public abstract void setStatus(boolean status);
     public abstract int getSize();
+
 //    public String getStatus() {
 //        return this.status;
 //    }
