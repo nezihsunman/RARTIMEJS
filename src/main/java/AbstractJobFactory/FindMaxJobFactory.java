@@ -5,7 +5,7 @@ import main.java.Jobs.FindMaxJob;
 
 public class FindMaxJobFactory extends Thread implements AbstractJobFactory {
     @Override
-    public AbstractJob getJob(int size) {
+    public AbstractJob getJob() {
         return new FindMaxJob();
     }
 }

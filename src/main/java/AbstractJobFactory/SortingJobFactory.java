@@ -6,8 +6,8 @@ import main.java.Jobs.SortingJob;
 public class SortingJobFactory implements AbstractJobFactory {
 
     @Override
-    public AbstractJob getJob(int size) {
-        return new SortingJob(size);
+    public AbstractJob getJob() {
+        return new SortingJob();
     }
 }
 //public class SortingJobFactory implements AbstractJobFactory {

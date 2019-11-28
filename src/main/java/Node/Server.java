@@ -13,10 +13,7 @@ public class Server implements Runnable {
     @Override
     public void run()
     {
-        //TODO something prettier
-        while (!JobQueue.getInstance().isEmpty()) {
-            q.put((AbstractJob) JobQueue.getInstance().remove());
-        }
+
     }
 
 }

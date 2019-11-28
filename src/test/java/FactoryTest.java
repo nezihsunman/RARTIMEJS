@@ -28,30 +28,8 @@ public class FactoryTest {
     }
     @Test
     public void testGivenFooWhenIncrementGetOne() throws Exception {
-        AbstractJob job = abstractJobFactory.getJob(15);
-        try {
-            job.putMessage();
+        AbstractJob job = abstractJobFactory.getJob();
 
-
-            ArrayList<Integer> testList = job.getMessage();
-            for (int i = 0; i < testList.size(); i++) {
-                System.out.println(testList.get(i));
-            }
-            job.putMessage();
-
-            ArrayList<Integer> testList2 = job.getMessage();
-            for (int i = 0; i < testList2.size(); i++) {
-                System.out.println(testList2.get(i));
-            }
-
-            job.putMessage();
-            ArrayList<Integer> testList3 = job.getMessage();
-            for (int i = 0; i < testList3.size(); i++) {
-                System.out.println(testList3.get(i));
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }

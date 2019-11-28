@@ -12,11 +12,11 @@ public class SortingJob extends AbstractJob implements Runnable {
     // random size array generation in the constructor.
     // could use a different data structure for benefitting from the
     //abstract factory more.
-    public SortingJob(int size) {
-        list = new ArrayList<Integer>(size);
+    public SortingJob() {
+        list = new ArrayList<Integer>();
         Random random = new Random();
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < 10; i++)
         {
             list.add(random.nextInt(1000));
         }
@@ -28,7 +28,7 @@ public class SortingJob extends AbstractJob implements Runnable {
     }
 
     @Override
-    public ArrayList<Integer> getMessage() throws InterruptedException {
+    public AbstractJob getMessage() throws InterruptedException {
         return null;
     }
 

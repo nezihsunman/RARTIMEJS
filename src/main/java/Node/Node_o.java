@@ -11,7 +11,7 @@ public class Node_o implements Observer_o {
 
     // not sure if they need to be public
     public List<Observer_o> nodes;
-    private JobQueue jobQueue = JobQueue.getInstance();
+
 
     public Node_o(int core, int ram) {
         this.core = core;
@@ -19,21 +19,15 @@ public class Node_o implements Observer_o {
 
     }
 
-    public void pushToQueue(AbstractJob job) {
-        jobQueue.add(job);
-    }
 
-    public Object popFromQueue() {
-        return jobQueue.remove();
-    }
 
     //TODO will use strategy pattern.
     public void solveProblem(){
-        AbstractJob job = (AbstractJob) popFromQueue();
+
         //job will be solved with strategy pattern
         // update method will be called at the end of strategy pattern
         //to move to the next job
-        update(job);
+
     }
 
     @Override
