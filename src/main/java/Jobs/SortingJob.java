@@ -1,6 +1,5 @@
 package main.java.Jobs;
 
-
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,7 +1,6 @@
 package main.java.Jobs;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 public class FindMaxJob extends AbstractJob implements Runnable {

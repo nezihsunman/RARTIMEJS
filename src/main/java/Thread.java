@@ -2,9 +2,6 @@ package main.java;
 
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
