@@ -30,13 +30,13 @@ public class JobQueue<J> extends PriorityQueue<J> {
     }
 
     synchronized public void addQue() throws InterruptedException {
-        getSingletonInstance();
+//        getSingletonInstance();
         AbstractJobFactory jobFactory = new FindMaxJobFactory();
         instance.add(jobFactory.getJob().getMessage());
     }
 
     synchronized public AbstractJob popFromQue() throws InterruptedException {
-        getSingletonInstance();
+//        getSingletonInstance();
         while(instance.isEmpty()) {
             wait();
             System.out.println("waiting");

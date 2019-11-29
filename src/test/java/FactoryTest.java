@@ -29,6 +29,7 @@ public class FactoryTest {
     @Test
     public void testGivenFooWhenIncrementGetOne() throws Exception {
         AbstractJob job = abstractJobFactory.getJob();
+        int a = 1;
 
     }
 
