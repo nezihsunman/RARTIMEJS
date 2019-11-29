@@ -10,10 +10,11 @@ import org.junit.Test;
 
 public class ObserverTests {
     @Test
-    public void test_Should_Call_The_Update_Method_When_Problem_Is_Solved() {
+    public void test_Should_Call_The_Update_Method_When_Problem_Is_Solved() throws InterruptedException {
         Scheduler s = new Scheduler();
         Node n = new Node(4);
         n.registerObserver(s);
+        n.solveProblem();
 
     }
 

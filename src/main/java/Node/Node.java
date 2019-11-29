@@ -1,11 +1,9 @@
 package main.java.Node;
 
 import main.java.Jobs.AbstractJob;
-import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -31,9 +29,6 @@ public class Node implements Observable, Runnable {
         }
         this.setNodeStatus("Available");
         System.out.println("Strategy goes here");
-//      get job from joblist
-//        AbstractJob J = jobList.remove(0);
-//        Strategy(J)
         notifyObservers();
 
     }
@@ -44,14 +39,17 @@ public class Node implements Observable, Runnable {
 
     public void addJob(AbstractJob J) {
         jobList.add(J);
+        notifyObservers();
     }
 
     void removeJob(AbstractJob J) {
         jobList.remove(J);
+        notifyObservers();
     }
 
     public void setNodeStatus(String s) {
         this.status = s;
+        notifyObservers();
     }
 
     @Override
