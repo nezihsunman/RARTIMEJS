@@ -3,10 +3,7 @@ package main.java.SingletonJobQueue;
 import main.java.AbstractJobFactory.AbstractJobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
-import main.java.Jobs.FindMaxJob;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class JobQueue<J> extends PriorityQueue<J> {
@@ -32,7 +29,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
     synchronized public void addQue() throws InterruptedException {
 //        getSingletonInstance();
         AbstractJobFactory jobFactory = new FindMaxJobFactory();
-        instance.add(jobFactory.getJob().getMessage());
+        instance.add(jobFactory.getJob().getJob());
     }
 
     synchronized public AbstractJob popFromQue() throws InterruptedException {

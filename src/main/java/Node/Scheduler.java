@@ -4,19 +4,22 @@ import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
 
-public class Scheduler implements Observer {
+public class Scheduler implements Observer, Runnable {
 
     @Override
     public void onObservableChanged(Node n) {
-        if (n.getNodeStatus() == "Available") {
-            System.out.println("give me a job pls");
+        if (n.checkAvailable()) {
+            System.out.println("Scheduler is assigning a job to Node");
             JobQueue q = JobQueue.getSingletonInstance();
             AbstractJob J = (AbstractJob) q.remove();
             n.addJob(J);
-        }
-
-        else {
+        } else {
             System.out.println("Node is busy");
         }
+    }
+
+    @Override
+    public void run() {
+
     }
 }

@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
 import com.anarsoft.vmlens.concurrent.junit.ConcurrentTestRunner;
 
 @RunWith(ConcurrentTestRunner.class)
@@ -22,9 +20,9 @@ public class ThreadTest extends Thread {
     @Before
     public void initialCount() {
         try {
-            job.getMessage();
-            job.putMessage();
-            job.putMessage();
+            job.getJob();
+//            job.createRandomJob();
+//            job.createRandomJob();
 
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -7,11 +7,12 @@ public abstract class AbstractJob extends Thread implements Comparable<AbstractJ
 //    private String status;
 //    private int priority;
     //TODO: will probably replaced with enum
-    public abstract void putMessage() throws InterruptedException;
-    public abstract AbstractJob getMessage() throws InterruptedException;
+//    public abstract void createRandomJob() throws InterruptedException;
+    public abstract AbstractJob getJob() throws InterruptedException;
     public abstract boolean getStatus();
     public abstract void setStatus(boolean status);
     public abstract int getSize();
+
 
 //    public String getStatus() {
 //        return this.status;

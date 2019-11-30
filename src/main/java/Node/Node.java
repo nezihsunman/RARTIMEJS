@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Node implements Observable, Runnable {
     int core;
     private String status;
-    private ArrayList<AbstractJob> jobList;
+    private ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
@@ -18,11 +18,11 @@ public class Node implements Observable, Runnable {
     {
         this.core = core;
         this.status = "Available";
-        this.jobList = jobList;
     }
 
     public synchronized void solveProblem() throws InterruptedException {
-        while (this.getNodeStatus() == "Busy") {
+        while (!this.checkAvailable()) {
+//        while (this.getNodeStatus() == "Busy") {
             System.out.println("Still Busy");
             wait();
 
@@ -33,18 +33,27 @@ public class Node implements Observable, Runnable {
 
     }
 
+    public boolean checkAvailable() {
+        if(this.jobList.size() <= this.core) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
     public String getNodeStatus() {
         return status;
     }
 
     public void addJob(AbstractJob J) {
         jobList.add(J);
-        notifyObservers();
+//        notifyObservers();
     }
 
     void removeJob(AbstractJob J) {
         jobList.remove(J);
-        notifyObservers();
+//        notifyObservers();
     }
 
     public void setNodeStatus(String s) {

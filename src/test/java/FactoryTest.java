@@ -29,8 +29,19 @@ public class FactoryTest {
     @Test
     public void testGivenFooWhenIncrementGetOne() throws Exception {
         AbstractJob job = abstractJobFactory.getJob();
-        int a = 1;
 
     }
+
+    @Test
+    public void test_Should_Create_Array_Of_Integers() {
+        JobQueue q = JobQueue.getSingletonInstance();
+        AbstractJobFactory jf_max = new FindMaxJobFactory();
+        for (int i = 0; i < 5; i ++) {
+            jf_max.getJob();
+        }
+
+        Assert.assertEquals(JobQueue.getSingletonInstance().size(), 5);
+    }
+
 
 }

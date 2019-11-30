@@ -21,13 +21,13 @@ public class SortingJob extends AbstractJob implements Runnable {
         }
     }
 
-    @Override
-    public void putMessage() throws InterruptedException {
+//    @Override
+//    public void createRandomJob() throws InterruptedException {
+//
+//    }
 
-    }
-
     @Override
-    public AbstractJob getMessage() throws InterruptedException {
+    public AbstractJob getJob() throws InterruptedException {
         return null;
     }
 
