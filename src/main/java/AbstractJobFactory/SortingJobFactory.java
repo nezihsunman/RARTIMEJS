@@ -1,17 +1,23 @@
 package main.java.AbstractJobFactory;
 
-import main.java.Jobs.AbstractJobs;
-import main.java.Jobs.SortingJobs;
-import main.java.SingletonJobQueue.AbstractJob;
+import main.java.Jobs.AbstractJob;
+import main.java.Jobs.SortingJob;
 
 public class SortingJobFactory implements AbstractJobFactory {
 
     @Override
-    public AbstractJobs getJob(int cpu, int ram, int jobtime) {
-        return new SortingJobs(cpu, ram, jobtime);
-    }
-
-    public void createRandomSortingJob() {
-
+    public AbstractJob getJob() {
+        return new SortingJob();
     }
 }
+//public class SortingJobFactory implements AbstractJobFactory {
+
+//    @Override
+//    public AbstractJob getJob(int cpu, int ram, int jobtime) {
+//        return new SortingJob(cpu, ram, jobtime);
+//    }
+//
+//    public void createRandomSortingJob() {
+//
+//    }
+//}
