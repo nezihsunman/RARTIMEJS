@@ -11,21 +11,26 @@ import java.util.NoSuchElementException;
 public class Scheduler extends Thread implements Observer {
 
     @Override
-    public synchronized void onObservableChanged(Node n) throws NoSuchElementException {
+    public synchronized void onObservableChanged(Node n) throws NoSuchElementException, InterruptedException {
         JobQueue q = JobQueue.getSingletonInstance();
-        try {
-            if (n.checkAvailable() ) {
-                System.out.println("Scheduler is assigning a job to Node");
 
-                AbstractJob J = (AbstractJob) q.remove();
-                System.out.println(q.size());
-                n.addJob(J);
+        if (n.checkAvailable()) {
+            System.out.println("Scheduler is assigning a job to Node");
+
+            while (q.isEmpty()) {
+                wait(5000);
+
             }
+            System.out.println(q.isEmpty());
+            AbstractJob J = (AbstractJob) q.remove();
+            n.addJob(J);
+            System.out.println(q.size());
+
+
+        } else {
+            System.out.println("node full");
         }
-        catch(NoSuchElementException e) {
-            System.out.println("Priorty q is empty");
-            this.interrupt();
-        }
+
     }
 
 
