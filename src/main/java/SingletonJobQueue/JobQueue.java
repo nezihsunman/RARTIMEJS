@@ -30,6 +30,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
 //        getSingletonInstance();
         AbstractJobFactory jobFactory = new FindMaxJobFactory();
         instance.add(jobFactory.getJob());
+        System.out.println("Added a Job to Singleton Priority Queue");
     }
 
     synchronized public AbstractJob popFromQue() throws InterruptedException {

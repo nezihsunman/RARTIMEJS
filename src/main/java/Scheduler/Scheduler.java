@@ -23,11 +23,13 @@ public class Scheduler extends Thread implements Observer {
 
         JobQueue q = JobQueue.getSingletonInstance();
         while (q.isEmpty()) {
+            System.out.println("Can not pop, the SingletonQueue is empty, Size: " + q.size());
             wait(5000);
-            System.out.println(q.isEmpty());
+//            System.out.println(q.isEmpty());
 
         }
-        System.out.println(q.isEmpty());
+//        System.out.println(q.isEmpty());
+        System.out.println("The SingletonQueue is not Empty anymore");
         this.scheduler.add((AbstractJob) q.remove());
     }
 
@@ -37,15 +39,15 @@ public class Scheduler extends Thread implements Observer {
         if (n.checkAvailable()) {
             while (this.scheduler.size() == 0) {
                 wait(2000);
-                System.out.println("Waiting for popFromQue thread");
+                System.out.println("There are no Jobs in the Scheduler.");
             }
             // Todo: Scheduler algorithm can call from there
             n.addJob(scheduler.remove(0));
-            System.out.println("Que " + q.size());
+            System.out.println("SingletonQueue size is: " +q.size());
 
 
         } else {
-            System.out.println("-----------------node full");
+            System.out.println("Node is full. Can not assign Job to Node");
         }
 
 

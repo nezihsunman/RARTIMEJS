@@ -20,11 +20,12 @@ public class ObserverTests {
         exec.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                MThread t1 = new MThread("One");
+                MThread t1 = new MThread("Producer Thread");
             }
         }, 0, 3, TimeUnit.SECONDS);
         final Scheduler scheduler = new Scheduler();
 
+        // i think the exec and exec2 stuff should be in AbstractFactory and Scheduler itself.
         exec2.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

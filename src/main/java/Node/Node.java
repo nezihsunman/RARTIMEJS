@@ -30,9 +30,10 @@ public class Node implements Observable, Runnable {
 
             int tempJobSize = jobList.size();
             // todo: This call stragty patern to hande the solition in try catch blog
-            wait(5000);
-            System.out.println("solution is processing");
             AbstractJob handedJob = jobList.remove(0);
+            System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
+            System.out.println("...Solving...");
+            wait(5000);
             notifyObservers();
 
         }
@@ -53,6 +54,7 @@ public class Node implements Observable, Runnable {
     }
 
     public void addJob(AbstractJob J) {
+        System.out.println("Node has a new Job in the Joblist");
         jobList.add(J);
 //        notifyObservers();
     }
