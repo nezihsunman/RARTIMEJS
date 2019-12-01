@@ -4,7 +4,7 @@ import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
 //Therad
-public class MThread implements Runnable {
+public class MThread extends Thread {
     JobQueue<AbstractJob> jobs;
     Thread t;
 

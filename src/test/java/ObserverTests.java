@@ -11,7 +11,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-@RunWith(ConcurrentTestRunner.class)
+//@RunWith(ConcurrentTestRunner.class) run every thread as a 4 thread
 public class ObserverTests {
     @Test
     public void test_Should_Call_The_Update_Method_When_Problem_Is_Solved() throws InterruptedException {
@@ -22,7 +22,7 @@ public class ObserverTests {
             public void run() {
                 MThread t1 = new MThread("One");
             }
-        }, 0, 5, TimeUnit.SECONDS);
+        }, 0, 3, TimeUnit.SECONDS);
         final Scheduler scheduler = new Scheduler();
 
         exec2.scheduleAtFixedRate(new Runnable() {
@@ -41,7 +41,6 @@ public class ObserverTests {
         scheduler.onObservableChanged(n);
         n.registerObserver(scheduler);
         n.solveProblem();
-
 
     }
 

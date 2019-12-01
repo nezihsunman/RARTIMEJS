@@ -4,10 +4,8 @@ import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
 import main.java.Node.Observer;
 import main.java.SingletonJobQueue.JobQueue;
-
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
 
 public class Scheduler extends Thread implements Observer {
     //Therad 2
@@ -23,7 +21,6 @@ public class Scheduler extends Thread implements Observer {
     //Thread wil call this function
     public synchronized void popFromQue() throws InterruptedException {
 
-
         JobQueue q = JobQueue.getSingletonInstance();
         while (q.isEmpty()) {
             wait(5000);
@@ -31,15 +28,15 @@ public class Scheduler extends Thread implements Observer {
 
         }
         System.out.println(q.isEmpty());
-        scheduler.add((AbstractJob) q.remove());
+        this.scheduler.add((AbstractJob) q.remove());
     }
 
     public synchronized void addJobToNode(Node n) throws InterruptedException {
         JobQueue q = JobQueue.getSingletonInstance();
 
         if (n.checkAvailable()) {
-            while (scheduler.size() == 0) {
-                wait(5000);
+            while (this.scheduler.size() == 0) {
+                wait(2000);
                 System.out.println("Waiting for popFromQue thread");
             }
             // Todo: Scheduler algorithm can call from there
