@@ -1,17 +1,16 @@
 package main.java.Thread;
 
-import main.java.Jobs.AbstractJob;
-import main.java.SingletonJobQueue.JobQueue;
+import main.java.Scheduler.Scheduler;
 
 public class MThread2 implements Runnable {
-    JobQueue<AbstractJob> jobs;
+    Scheduler jobs;
     Thread t;
 
-   public MThread2(String thread, JobQueue<AbstractJob> jobQueue) {
+    public MThread2(String thread, Scheduler scheduler) {
         String name = thread;
         t = new Thread(this, name);
         System.out.println("New thread: " + t);
-        jobs=jobQueue;
+        jobs = scheduler;
         t.start();
     }
 

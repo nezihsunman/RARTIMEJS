@@ -14,11 +14,13 @@ public class Node implements Observable, Runnable {
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public Node(int core) {
+    public Node(int core) throws InterruptedException {
         this.core = core;
         this.status = "Available";
+        notifyObservers();
     }
 
+    //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         while (true) {
 //
@@ -26,9 +28,9 @@ public class Node implements Observable, Runnable {
                 break;
             }
 
-
             int tempJobSize = jobList.size();
             // todo: This call stragty patern to hande the solition in try catch blog
+            wait(5000);
             System.out.println("solution is processing");
             AbstractJob handedJob = jobList.remove(0);
             notifyObservers();

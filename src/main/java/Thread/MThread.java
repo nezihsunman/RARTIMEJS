@@ -3,6 +3,7 @@ package main.java.Thread;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
+//Therad
 public class MThread implements Runnable {
     JobQueue<AbstractJob> jobs;
     Thread t;
@@ -18,7 +19,7 @@ public class MThread implements Runnable {
     @Override
     public void run() {
         try {
-            jobs=JobQueue.getSingletonInstance();
+            jobs = JobQueue.getSingletonInstance();
             jobs.addQue();
         } catch (InterruptedException e) {
             e.printStackTrace();

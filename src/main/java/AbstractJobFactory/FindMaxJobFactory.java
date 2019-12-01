@@ -2,9 +2,6 @@ package main.java.AbstractJobFactory;
 
 import main.java.Jobs.AbstractJob;
 import main.java.Jobs.FindMaxJob;
-import main.java.SingletonJobQueue.JobQueue;
-
-import java.util.Random;
 
 public class FindMaxJobFactory extends Thread implements AbstractJobFactory {
     @Override
