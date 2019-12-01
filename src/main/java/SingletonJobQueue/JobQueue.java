@@ -29,7 +29,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
     synchronized public void addQue() throws InterruptedException {
 //        getSingletonInstance();
         AbstractJobFactory jobFactory = new FindMaxJobFactory();
-        instance.add(jobFactory.getJob().getJob());
+        instance.add(jobFactory.getJob());
     }
 
     synchronized public AbstractJob popFromQue() throws InterruptedException {

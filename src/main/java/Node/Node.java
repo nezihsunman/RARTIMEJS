@@ -14,34 +14,38 @@ public class Node implements Observable, Runnable {
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public Node(int core)
-    {
+    public Node(int core) {
         this.core = core;
         this.status = "Available";
     }
 
     public synchronized void solveProblem() throws InterruptedException {
-        while (!this.checkAvailable()) {
-//        while (this.getNodeStatus() == "Busy") {
-            System.out.println("Still Busy");
-            wait();
+        while (true) {
+//
+            if (jobList.size() == 0) {
+                break;
+            }
+
+
+            int tempJobSize = jobList.size();
+            // todo: This call stragty patern to hande the solition in try catch blog
+            System.out.println("solution is processing");
+            AbstractJob handedJob = jobList.remove(0);
+            notifyObservers();
 
         }
-        this.setNodeStatus("Available");
-        System.out.println("Strategy goes here");
-        notifyObservers();
+
 
     }
 
     public boolean checkAvailable() {
-        if(this.jobList.size() <= this.core) {
+        if (this.jobList.size() < this.core) {
             return true;
-        }
-
-        else {
+        } else {
             return false;
         }
     }
+
     public String getNodeStatus() {
         return status;
     }
@@ -56,7 +60,7 @@ public class Node implements Observable, Runnable {
 //        notifyObservers();
     }
 
-    public void setNodeStatus(String s) {
+    public void setNodeStatus(String s) throws InterruptedException {
         this.status = s;
         notifyObservers();
     }
@@ -75,7 +79,7 @@ public class Node implements Observable, Runnable {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers() throws InterruptedException {
         for (Observer observer : mObservers) { // this is safe due to thread-safe Set
             observer.onObservableChanged(this);
         }
