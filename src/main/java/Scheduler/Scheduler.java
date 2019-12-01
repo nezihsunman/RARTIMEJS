@@ -44,6 +44,7 @@ public class Scheduler extends Thread implements Observer {
             // Todo: Scheduler algorithm can call from there
             n.addJob(scheduler.remove(0));
             System.out.println("SingletonQueue size is: " +q.size());
+            System.out.println("Node Job capacity is: " + n.jobList.size());
 
 
         } else {

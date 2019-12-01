@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Node implements Observable, Runnable {
     int core;
     private String status;
-    private ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
+    public ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
