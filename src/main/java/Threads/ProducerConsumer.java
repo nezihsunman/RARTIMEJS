@@ -50,7 +50,7 @@ public class ProducerConsumer {
                 //so it can start consuming
                 notify();
                 //and sleep
-                Thread.sleep(2000);
+                Thread.sleep(1000);
 
             }
         }
