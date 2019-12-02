@@ -28,7 +28,6 @@ public class Node implements Observable, Runnable {
                 break;
             }
 
-            int tempJobSize = jobList.size();
             // todo: This call stragty patern to hande the solition in try catch blog
             AbstractJob handedJob = jobList.remove(0);
             System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
