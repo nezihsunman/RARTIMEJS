@@ -6,7 +6,7 @@ import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
 
-class ProducerConsumer {
+public class ProducerConsumer {
     JobQueue queue = JobQueue.getSingletonInstance();
     AbstractJobFactory jf_max = new FindMaxJobFactory();
     //capacity is 6 for easier demonstration.
@@ -15,7 +15,7 @@ class ProducerConsumer {
     public void consume() throws InterruptedException {
         while(true) {
             synchronized (this) {
-                while (queue.isEmpty()) {
+                while (queue.size() == 0) {
                     try {
                         System.out.println("Nothing is in the Priority Queue. Consumer is waiting.");
                         wait();
@@ -23,13 +23,13 @@ class ProducerConsumer {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    AbstractJob J = (AbstractJob) queue.remove();
-                    //Wake Up Producer Thread
-                    notify();
-                    //Sleep
-                    Thread.sleep(1000);
-
                 }
+                AbstractJob J = (AbstractJob) queue.remove();
+                //Wake Up Producer Thread
+                notify();
+                //Sleep
+                Thread.sleep(1000);
+
             }
         }
 
@@ -43,18 +43,18 @@ class ProducerConsumer {
                 while (queue.size() == capacity)
                     wait();
                 AbstractJob J = jf_max.getJob();
+                System.out.println("Produced a new job");
                 queue.add(J);
+                System.out.println("Queue Size is: " + queue.size());
                 //notifies the producer thread
                 //so it can start consuming
                 notify();
                 //and sleep
-                Thread.sleep(1000);
+                Thread.sleep(2000);
 
             }
         }
 
-        
-        
     }
 }
 
