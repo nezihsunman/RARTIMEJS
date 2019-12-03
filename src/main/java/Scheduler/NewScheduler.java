@@ -97,6 +97,9 @@ public class NewScheduler implements Observer{
     }
     @Override
     public void onObservableChanged(Node n) throws InterruptedException {
+        if (n.checkAvailable()) {
+
+        }
 
 
     }

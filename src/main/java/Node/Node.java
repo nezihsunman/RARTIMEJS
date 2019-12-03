@@ -65,7 +65,7 @@ public class Node implements Observable, Runnable {
 
     public void setNodeStatus(String s) throws InterruptedException {
         this.status = s;
-        notifyObservers();
+//        notifyObservers();
     }
 
     @Override
