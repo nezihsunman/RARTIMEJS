@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
-    private boolean putstatus = true;
     private ArrayList<Integer> list = new ArrayList<Integer>();
+    private boolean status = false;
     JobQueue q = JobQueue.getSingletonInstance();
 
     @Override
@@ -22,19 +22,18 @@ public class FindMaxJob extends AbstractJob implements Runnable {
         for (int i = 0; i < randomSize; i++) {
             list.add(random.nextInt(1000));
         }
-        q.add(this);
 
     }
 
     @Override
     public boolean getStatus() {
-        return this.putstatus;
+        return status;
     }
-
 
     @Override
     public void setStatus(boolean status) {
-        this.putstatus = status;
+        this.status = status;
+
     }
 
     @Override
@@ -44,6 +43,6 @@ public class FindMaxJob extends AbstractJob implements Runnable {
 
     @Override
     public String toString() {
-        return "Type: FindMaxJob, Size: " + getSize() + ", Status: " + getStatus();
+        return String.format("Type: " + getClass() + ", Size: " + getSize() + ", Status: " + getStatus());
     }
 }
