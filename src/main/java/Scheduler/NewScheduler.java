@@ -7,7 +7,7 @@ import main.java.Threads.ProducerConsumer;
 public class NewScheduler implements Observer{
     public NewScheduler() throws InterruptedException{
         final ProducerConsumer pc = new ProducerConsumer();
-        final Thread producerThread  = new Thread(new Runnable() {
+        Thread producerThread  = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {

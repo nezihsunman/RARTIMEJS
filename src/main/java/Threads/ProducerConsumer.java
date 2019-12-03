@@ -9,22 +9,19 @@ import main.java.SingletonJobQueue.JobQueue;
 public class ProducerConsumer {
     JobQueue queue = JobQueue.getSingletonInstance();
     AbstractJobFactory jf_max = new FindMaxJobFactory();
-    //capacity is 6 for easier demonstration.
-    int capacity = 6;
+    //capacity is 2 for easier demonstration.
+    int capacity = 2;
 
     public void consume() throws InterruptedException {
         while(true) {
             synchronized (this) {
                 while (queue.size() == 0) {
-                    try {
-                        System.out.println("Nothing is in the Priority Queue. Consumer is waiting.");
-                        wait();
-                        System.out.println("Producer added something to the PriorityQueue and notified the consumer.");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    wait();
                 }
-                AbstractJob J = (AbstractJob) queue.remove();
+
+                Object val = queue.remove();
+                System.out.println("Consumer consumed-" + val);
+//                AbstractJob J = (AbstractJob) queue.remove();
                 //Wake Up Producer Thread
                 notify();
                 //Sleep
@@ -40,14 +37,23 @@ public class ProducerConsumer {
         while (true) {
             synchronized (this) {
                 //producer waits while list is full
-                while (queue.size() == capacity)
+                while (queue.size() == capacity) {
+                    System.out.println("Queue size is: " + queue.size());
+                    System.out.println("Waiting...");
                     wait();
-                AbstractJob J = jf_max.getJob();
-                System.out.println("Produced a new job");
-                queue.add(J);
-                System.out.println("Queue Size is: " + queue.size());
+                    System.out.println("Got notified");
+                    System.out.println("List size is not equal to capacity anymore: " + queue.size());
+
+                }
+
+                System.out.println("Producer produced job: " + value);
+//                AbstractJob J = jf_max.getJob();
+//                System.out.println("Produced a new job");
+//                queue.add(J);
+//                System.out.println("Queue Size is: " + queue.size());
                 //notifies the producer thread
                 //so it can start consuming
+                queue.add(value++);
                 notify();
                 //and sleep
                 Thread.sleep(1000);
