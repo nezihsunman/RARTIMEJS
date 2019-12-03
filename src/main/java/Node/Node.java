@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Node implements Observable, Runnable {
     int core;
     private String status;
-    private ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
+    public ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
@@ -28,11 +28,11 @@ public class Node implements Observable, Runnable {
                 break;
             }
 
-            int tempJobSize = jobList.size();
             // todo: This call stragty patern to hande the solition in try catch blog
-            wait(5000);
-            System.out.println("solution is processing");
             AbstractJob handedJob = jobList.remove(0);
+            System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
+            System.out.println("...Solving...");
+            wait(5000);
             notifyObservers();
 
         }
@@ -53,6 +53,7 @@ public class Node implements Observable, Runnable {
     }
 
     public void addJob(AbstractJob J) {
+        System.out.println("Node has a new Job in the Joblist");
         jobList.add(J);
 //        notifyObservers();
     }
@@ -64,7 +65,7 @@ public class Node implements Observable, Runnable {
 
     public void setNodeStatus(String s) throws InterruptedException {
         this.status = s;
-        notifyObservers();
+//        notifyObservers();
     }
 
     @Override

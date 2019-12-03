@@ -11,7 +11,7 @@ public class MThread extends Thread {
     public MThread(String thread) {
         String name = thread;
         t = new Thread(this, name);
-        System.out.println("New thread: " + t);
+//        System.out.println("New thread: " + t);
 
         t.start();
     }
