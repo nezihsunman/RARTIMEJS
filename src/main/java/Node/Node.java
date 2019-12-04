@@ -1,6 +1,8 @@
 package main.java.Node;
 
 import main.java.Jobs.AbstractJob;
+import main.java.Scheduler.NewScheduler;
+import main.java.Scheduler.Scheduler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,18 +16,38 @@ public class Node implements Observable, Runnable {
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public Node(int core) throws InterruptedException {
+    public Node(int core, Observer scheduler) throws InterruptedException {
         this.core = core;
         this.status = "Available";
+        Thread solveThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    solveProblem();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        solveThread.start();
+        System.out.println("Thread Solve problem is created");
+        Observer observer1= scheduler;
+        registerObserver(observer1);
         notifyObservers();
+    }
+
+    public Node(int core) {
+        this.core = core;
     }
 
     //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         while (true) {
 //
-            if (jobList.size() == 0) {
-                break;
+            while (jobList.size() == 0) {
+                System.out.println("job list is empty");
+                wait(1000);
+                notifyObservers();
             }
 
             // todo: This call stragty patern to hande the solition in try catch blog
@@ -37,9 +59,7 @@ public class Node implements Observable, Runnable {
 
         }
 
-
     }
-
     public boolean checkAvailable() {
         if (this.jobList.size() < this.core) {
             return true;
@@ -92,4 +112,5 @@ public class Node implements Observable, Runnable {
     public void run() {
 
     }
+
 }

@@ -37,7 +37,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
 //        getSingletonInstance();
         while (instance.isEmpty()) {
             wait();
-            System.out.println("waiting");
+            System.out.println("Waiting in popFromQue");
         }
         System.out.println("Removedddddd");
         return instance.remove();
