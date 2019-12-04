@@ -1,9 +1,8 @@
 package main.java.Node;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
 
+//Singleton Cluster for having a reference to the available nodes in the system.
 public class Cluster {
     private static Cluster instance;
     private ArrayList<Node> cluster = null;

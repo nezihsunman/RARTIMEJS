@@ -18,7 +18,6 @@ public class Node implements Observable, Runnable {
     public Node(int core) throws InterruptedException {
         this.core = core;
         this.status = "Available";
-//        notifyObservers();
     }
 
     //Therad 3
@@ -36,7 +35,6 @@ public class Node implements Observable, Runnable {
             J.setStatus(true);
             removeJob(J);
             setNodeStatus("Available");
-//            notifyObservers();
 
         }
 
@@ -45,7 +43,6 @@ public class Node implements Observable, Runnable {
 
     public boolean checkAvailable() {
         if (this.jobList.size() < this.core) {
-//            this.setNodeStatus("Available");
             return true;
         } else {
             return false;

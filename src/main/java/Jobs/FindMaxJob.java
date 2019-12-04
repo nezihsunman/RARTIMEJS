@@ -11,7 +11,6 @@ public class FindMaxJob extends AbstractJob implements Runnable {
     private ArrayList<Integer> list = new ArrayList<Integer>();
     private boolean status = false;
     String uniqueID = UUID.randomUUID().toString();
-    JobQueue q = JobQueue.getSingletonInstance();
 
     @Override
     public void run() {

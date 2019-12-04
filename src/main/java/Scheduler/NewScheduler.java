@@ -16,7 +16,6 @@ public class NewScheduler implements Observer{
     private Cluster c = Cluster.getSingletonInstance();
     private AbstractJobFactory jf_max = new FindMaxJobFactory();
     private ArrayList<Node> nodes;
-    private boolean firstJobFlag = true;
     //capacity is 2 for easier demonstration.
     int capacity = 2;
 
@@ -70,22 +69,15 @@ public class NewScheduler implements Observer{
                     node.addJob(J);
                     node.solveProblem();
                     System.out.println("Consumer consumed-" + J);
-                    //                       notify();
-                    //                       Thread.sleep(1000);
                 }
 
                 notify();
                 //Sleep
                 Thread.sleep(1000);
-                }
-//                J.setStatus(true);
-                //Wake Up Producer Thread
-//                notify();
-                //Sleep
-//                Thread.sleep(1000);
-
             }
+
         }
+    }
 
 
     public void produce() throws InterruptedException {
@@ -128,10 +120,6 @@ public class NewScheduler implements Observer{
         else {
             n.setNodeStatus("Busy");
         }
-
-
     }
-
-
 }
 

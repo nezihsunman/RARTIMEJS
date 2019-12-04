@@ -10,14 +10,3 @@ public class SortingJobFactory implements AbstractJobFactory {
         return new SortingJob();
     }
 }
-//public class SortingJobFactory implements AbstractJobFactory {
-
-//    @Override
-//    public AbstractJob getJob(int cpu, int ram, int jobtime) {
-//        return new SortingJob(cpu, ram, jobtime);
-//    }
-//
-//    public void createRandomSortingJob() {
-//
-//    }
-//}
