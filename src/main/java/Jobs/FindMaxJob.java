@@ -4,11 +4,13 @@ import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.UUID;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
     private ArrayList<Integer> list = new ArrayList<Integer>();
     private boolean status = false;
+    String uniqueID = UUID.randomUUID().toString();
     JobQueue q = JobQueue.getSingletonInstance();
 
     @Override
@@ -41,8 +43,12 @@ public class FindMaxJob extends AbstractJob implements Runnable {
         return this.list.size();
     }
 
+    public String getUniqueID() {
+        return this.uniqueID;
+    }
+
     @Override
     public String toString() {
-        return String.format("Type: " + getClass() + ", Size: " + getSize() + ", Status: " + getStatus());
+        return String.format("ID" + getUniqueID() + ", Size: " + getSize() + ", Status: " + getStatus());
     }
 }
