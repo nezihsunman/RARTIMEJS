@@ -1,18 +1,18 @@
 package test.java;
 
-import main.java.AbstractJobFactory.AbstractJobFactory;
-import main.java.AbstractJobFactory.FindMaxJobFactory;
+import main.java.Node.Cluster;
+import main.java.Node.Node;
 import main.java.Scheduler.NewScheduler;
-import main.java.Scheduler.Scheduler;
-import main.java.SingletonJobQueue.JobQueue;
-import main.java.Threads.ProducerConsumer;
-import org.junit.Assert;
 import org.junit.Test;
+
 
 
 public class ProducerConsumerTests {
     @Test
-    public void test_Should_Initialize_Only_One_Object() throws InterruptedException{
+    public void test_Should_Never_End() throws InterruptedException{
+        Cluster c = Cluster.getSingletonInstance();
+        Node n = new Node(2);
+        c.registerNode(n);
         NewScheduler s = new NewScheduler();
 
     }

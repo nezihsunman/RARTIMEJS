@@ -3,19 +3,26 @@ package main.java.Scheduler;
 import main.java.AbstractJobFactory.AbstractJobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
+import main.java.Node.Cluster;
 import main.java.Node.Node;
 import main.java.Node.Observer;
 import main.java.SingletonJobQueue.JobQueue;
+
+import java.util.ArrayList;
 //import main.java.Threads.ProducerConsumer;
 
 public class NewScheduler implements Observer{
-    JobQueue queue = JobQueue.getSingletonInstance();
-    AbstractJobFactory jf_max = new FindMaxJobFactory();
+    private JobQueue queue = JobQueue.getSingletonInstance();
+    private Cluster c = Cluster.getSingletonInstance();
+    private AbstractJobFactory jf_max = new FindMaxJobFactory();
+    private ArrayList<Node> nodes;
     //capacity is 2 for easier demonstration.
     int capacity = 2;
 
     public NewScheduler() throws InterruptedException{
 //        final ProducerConsumer pc = new ProducerConsumer();
+
+        this.nodes = c.getCluster();
         Thread producerThread  = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -56,18 +63,22 @@ public class NewScheduler implements Observer{
                     wait();
                 }
 
-                AbstractJob J = (AbstractJob) queue.remove();
-                J.setStatus(true);
-                System.out.println("Consumer consumed-" + J);
-                //Wake Up Producer Thread
+                for (Node node : nodes){
+                    AbstractJob J = (AbstractJob) queue.remove();
+                    node.registerObserver(this);
+                    node.addJob(J);
+                    node.solveProblem();
+                    System.out.println("Consumer consumed-" + J);
+                }
+
                 notify();
                 //Sleep
                 Thread.sleep(1000);
-
             }
-        }
 
+        }
     }
+
 
     public void produce() throws InterruptedException {
         int value = 0;
@@ -98,9 +109,17 @@ public class NewScheduler implements Observer{
     @Override
     public void onObservableChanged(Node n) throws InterruptedException {
         if (n.checkAvailable()) {
+            System.out.println("lalalala");
+            if (!queue.isEmpty()) {
 
+                AbstractJob J = (AbstractJob) queue.remove();
+                n.addJob(J);
+                n.solveProblem();
+            }
         }
-
-
+        else {
+            n.setNodeStatus("Busy");
+        }
     }
 }
+
