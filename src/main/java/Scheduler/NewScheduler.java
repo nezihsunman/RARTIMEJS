@@ -1,6 +1,6 @@
 package main.java.Scheduler;
 
-import main.java.AbstractJobFactory.AbstractJobFactory;
+import main.java.AbstractJobFactory.SimpleJobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class NewScheduler extends Thread implements Observer {
     JobQueue queue = JobQueue.getSingletonInstance();
-    AbstractJobFactory jf_max = new FindMaxJobFactory();
+    SimpleJobFactory jf_max = new FindMaxJobFactory();
     private static ArrayList<AbstractJob> tempJobList =new ArrayList<AbstractJob>();
     private static ArrayList<Node> NodeList;
     //capacity is 2 for easier demonstration.
