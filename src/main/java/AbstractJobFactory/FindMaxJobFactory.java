@@ -8,6 +8,11 @@ public class FindMaxJobFactory extends Thread implements AbstractJobFactory {
     public AbstractJob getJob() {
         return new FindMaxJob();
     }
+
+    @Override
+    public ClassLoader getContextClassLoader() {
+        return super.getContextClassLoader();
+    }
 }
 //public class FindMaxJobFactory implements AbstractJobFactory, Runnable {
 ////public class FindMaxJobFactory implements AbstractJobFactory {
