@@ -9,59 +9,37 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Node implements Observable, Runnable {
     int core;
-    private Cluster c;
     private String status;
-    private ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
+    public ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public boolean nodeAvailable() {
-        if(0<jobList.size()&& jobList.size()<core)
-            return true;
-        else if (jobList.size()==core)
-            return false;
-        else{
-            return false;
-        }
-    }
     public Node(int core) throws InterruptedException {
         this.core = core;
         this.status = "Available";
-
-        Thread solveThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    solveProblem();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        solveThread.start();
-
+        System.out.println("Node is created");
     }
+
 
     //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         while (true) {
-            if (!this.nodeAvailable()) {
+//
+            while (jobList.size() == 0) {
                 System.out.println("job list is empty");
-                wait(1000);
+                Thread.sleep(1000);
                 notifyObservers();
-                break;
             }
+
             // todo: This call stragty patern to hande the solition in try catch blog
-            AbstractJob J = jobList.get(0);
+            AbstractJob handedJob = jobList.get(0);
             System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
             System.out.println("...Solving...");
-            wait(5000);
-            J.setStatus(true);
-            removeJob(J);
-            setNodeStatus("Available");
+            handedJob.setStatus(true);
+            removeJob(handedJob);
+            setNodeStatus("Avaliable");
 
         }
-
 
     }
 
@@ -97,7 +75,6 @@ public class Node implements Observable, Runnable {
     public void registerObserver(Observer observer) {
         if (observer == null) return;
         mObservers.add(observer); // this is safe due to thread-safe Set
-//        c.registerNode((Node) observer);
     }
 
     @Override
@@ -119,11 +96,18 @@ public class Node implements Observable, Runnable {
 
     }
 
-    public ArrayList<AbstractJob> getJobList() {
-        return jobList;
+    public void solveThread() {
+        Thread solveThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    solveProblem();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        solveThread.start();
     }
 
-    public void setJobList(ArrayList<AbstractJob> jobList) {
-        this.jobList = jobList;
-    }
 }
