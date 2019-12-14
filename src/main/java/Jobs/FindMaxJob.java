@@ -1,16 +1,16 @@
 package main.java.Jobs;
 
-import main.java.SingletonJobQueue.JobQueue;
+import main.java.executeStrategy.NoSort;
+import main.java.executeStrategy.NormalFindMax;
 
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.UUID;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
-    private ArrayList<Integer> list = new ArrayList<Integer>();
+
     private boolean status = false;
     //String uniqueID = UUID.randomUUID().toString();
+
 
     @Override
     public void run() {
@@ -18,12 +18,14 @@ public class FindMaxJob extends AbstractJob implements Runnable {
     }
 
     public FindMaxJob() {
+
         Random random = new Random();
         int randomSize = random.nextInt(10);
         for (int i = 0; i < randomSize; i++) {
-            list.add(random.nextInt(1000));
+            super.getList().add(random.nextInt(1000));
         }
-
+        sortExecudeStrategyInterfaceBehaviour = new NoSort();
+        findMaxExecudeStrategyInterfaceBehaviour = new NormalFindMax();
     }
 
     @Override
@@ -39,12 +41,12 @@ public class FindMaxJob extends AbstractJob implements Runnable {
 
     @Override
     public int getSize() {
-        return this.list.size();
+        return super.getList().size();
     }
 
-  /* public String getUniqueID() {
-        return this.uniqueID;
-    }*/
+    /* public String getUniqueID() {
+          return this.uniqueID;
+      }*/
 
     @Override
     public String toString() {

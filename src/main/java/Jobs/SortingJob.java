@@ -1,5 +1,8 @@
 package main.java.Jobs;
 
+import main.java.executeStrategy.NoFindMax;
+import main.java.executeStrategy.QuickSort;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,12 +12,14 @@ public class SortingJob extends AbstractJob implements Runnable {
     private ArrayList<Integer> list;
 
     public SortingJob() {
+        findMaxExecudeStrategyInterfaceBehaviour=new NoFindMax();
         list = new ArrayList<Integer>();
         Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
             list.add(random.nextInt(1000));
         }
+        sortExecudeStrategyInterfaceBehaviour=new QuickSort();
     }
 
     @Override

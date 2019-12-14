@@ -1,19 +1,18 @@
 package main.java.Thread;
 
-import main.java.Node.Node;
 import main.java.Scheduler.NewScheduler;
 
-public class SolveThread extends Thread {
-    private Node node;
+public class InternalSchedulerAssignThread extends Thread {
+    private NewScheduler s;
 
-    public SolveThread(Node node) {
-        this.node = node;
+    public InternalSchedulerAssignThread(NewScheduler scheduler) {
+        this.s=scheduler;
     }
 
     @Override
     public void run() {
         try {
-            node.solveProcess();
+            s.consume();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

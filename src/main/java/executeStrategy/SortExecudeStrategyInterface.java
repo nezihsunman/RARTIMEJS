@@ -1,20 +1,8 @@
 package main.java.executeStrategy;
 
+import java.util.ArrayList;
+
 public interface SortExecudeStrategyInterface {
-    void execute();
+    ArrayList<Integer> executeSort(ArrayList<Integer> list);
 }
 
-class BubbleSort implements SortExecudeStrategyInterface {
-
-    @Override
-    public void execute() {
-
-    }
-}
-class QuickSort implements SortExecudeStrategyInterface {
-
-    @Override
-    public void execute() {
-
-    }
-}
