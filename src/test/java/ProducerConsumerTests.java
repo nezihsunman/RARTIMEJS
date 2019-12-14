@@ -23,6 +23,9 @@ public class ProducerConsumerTests {
         Node n = new Node(4);
         n.registerObserver(s);
         n.nodeStartThread();
+        Node n1 = new Node(4);
+        n1.registerObserver(s);
+        n1.nodeStartThread();
        // n.solveProblem();
         System.out.println("Test Finish");
 

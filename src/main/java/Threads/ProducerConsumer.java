@@ -1,10 +1,5 @@
 package main.java.Threads;
 
-import main.java.AbstractJobFactory.AbstractJobFactory;
-import main.java.AbstractJobFactory.FindMaxJobFactory;
-import main.java.Jobs.AbstractJob;
-import main.java.SingletonJobQueue.JobQueue;
-
 
 //public class ProducerConsumer {
 //    JobQueue queue = JobQueue.getSingletonInstance();

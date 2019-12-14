@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class AbstractJob extends Thread implements Comparable<AbstractJob> {
     FindMaxExecudeStrategyInterface findMaxExecudeStrategyInterfaceBehaviour;
     SortExecudeStrategyInterface sortExecudeStrategyInterfaceBehaviour;
-    private ArrayList<Integer> list = new ArrayList<Integer>();
+
 
     public abstract boolean getStatus();
 
@@ -17,6 +17,7 @@ public abstract class AbstractJob extends Thread implements Comparable<AbstractJ
 
     public abstract int getSize();
 
+    public abstract ArrayList<Integer> getList();
     @Override
     //pop lowest priority first
     public int compareTo(AbstractJob j) {
@@ -28,9 +29,7 @@ public abstract class AbstractJob extends Thread implements Comparable<AbstractJ
 
         return 0;
     }
-    public ArrayList<Integer> getList() {
-        return list;
-    }
+
 
     public FindMaxExecudeStrategyInterface getFindMaxExecudeStrategyInterfaceBehaviour() {
         return findMaxExecudeStrategyInterfaceBehaviour;

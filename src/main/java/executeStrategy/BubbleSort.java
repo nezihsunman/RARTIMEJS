@@ -20,5 +20,6 @@ public class BubbleSort implements SortExecudeStrategyInterface {
                 }
             }
         }
+        return list;
     }
 }
