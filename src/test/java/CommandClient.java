@@ -22,9 +22,11 @@ public class CommandClient {
                 System.out.println("Pleaseeee enterrr Valueee");
                 value = in.nextLine();
                 if (value.equals("1")) {
-
+                    takeArraylist();
+                    //call command
                 } else if (value.equals("2")) {
-
+                    takeArraylist();
+                    //call command and generate
                 }
             }
             if (value.equals("2")) {
@@ -37,22 +39,27 @@ public class CommandClient {
 
             String s = in.nextLine();
             System.out.println("You entered string " + s);
-            System.out.println("if you want to exit press enter (*) ");
-            while (true) {
-                String b = in.nextLine();
-                if (b.equals("*")) {
-                    break;
-                }
-                try {
-                    int c = Integer.parseInt(b);
-                    list.add(c);
-                    System.out.println("You entered int " + b);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
+        }
 
+    }
+    public static void takeArraylist() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("if you want to exit press enter Integer (*) ");
+        while (true) {
+            String b = in.nextLine();
+            if (b.equals("*")) {
+                break;
             }
+            try {
+                int c = Integer.parseInt(b);
+                list.add(c);
+                System.out.println("You entered int " + b);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 }
