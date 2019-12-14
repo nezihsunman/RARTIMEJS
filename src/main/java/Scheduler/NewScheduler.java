@@ -16,6 +16,7 @@ public class NewScheduler implements Observer{
     private Cluster c = Cluster.getSingletonInstance();
     private AbstractJobFactory jf_max = new FindMaxJobFactory();
     private ArrayList<Node> nodes;
+    private ArrayList<AbstractJob> tempJobList = new ArrayList<AbstractJob>();
     //capacity is 2 for easier demonstration.
     int capacity = 2;
 
@@ -23,7 +24,8 @@ public class NewScheduler implements Observer{
 //        final ProducerConsumer pc = new ProducerConsumer();
 
         this.nodes = c.getCluster();
-        Thread producerThread  = new Thread(new Runnable() {
+        threadInitialise();
+        /*Thread producerThread  = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -52,10 +54,10 @@ public class NewScheduler implements Observer{
         producerThread.start();
         consumerThread.join();
         producerThread.join();
-
+*/
     }
 
-    public void consume() throws InterruptedException {
+    public synchronized void consume() throws InterruptedException {
         while(true) {
             synchronized (this) {
                 while (queue.size() == 0) {
@@ -79,12 +81,12 @@ public class NewScheduler implements Observer{
     }
 
 
-    public void produce() throws InterruptedException {
+    public synchronized void produce() throws InterruptedException {
         int value = 0;
         while (true) {
             synchronized (this) {
                 //producer waits while list is full
-                while (queue.size() == capacity) {
+                while (queue.size() == 8) {
                     System.out.println("Queue size is: " + queue.size());
                     System.out.println("Waiting...");
                     wait();
@@ -105,6 +107,10 @@ public class NewScheduler implements Observer{
         }
 
     }
+    private synchronized int sizeTempJobList() {
+        return this.tempJobList.size();
+    }
+
     @Override
     public void onObservableChanged(Node n) throws InterruptedException {
         if (n.checkAvailable()) {
@@ -119,6 +125,39 @@ public class NewScheduler implements Observer{
         else {
             n.setNodeStatus("Busy");
         }
+    }
+
+    public void threadInitialise() throws InterruptedException {
+        Thread producerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    produce();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread consumerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    consume();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+        producerThread.start();
+        consumerThread.start();
+        //Join usage give bug for execute other steps
+        /*producerThread.join();
+        consumerThread.join();*/
+
     }
 
 }

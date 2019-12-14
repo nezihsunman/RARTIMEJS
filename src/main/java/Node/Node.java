@@ -27,12 +27,28 @@ public class Node implements Observable, Runnable {
     public Node(int core) throws InterruptedException {
         this.core = core;
         this.status = "Available";
+
+        Thread solveThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    solveProblem();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        solveThread.start();
+
     }
 
     //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         while (true) {
             if (!this.nodeAvailable()) {
+                System.out.println("job list is empty");
+                wait(1000);
+                notifyObservers();
                 break;
             }
             // todo: This call stragty patern to hande the solition in try catch blog
