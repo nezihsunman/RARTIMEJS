@@ -19,11 +19,21 @@ public class Cluster {
         return instance;
     }
 
-    public ArrayList<Node> getCluster(){
+    public ArrayList<Node> getCluster() {
         return this.cluster;
     }
 
-    public void registerNode (Node n ) {
+    public Node getAvailableNode() {
+        for (Node node : cluster) {
+            if (node.checkAvailable()) {
+                return node;
+            }
+        }
+        System.out.println("No Node avaliable");
+        return null;
+    }
+
+    public void registerNode(Node n) {
         cluster.add(n);
     }
 }

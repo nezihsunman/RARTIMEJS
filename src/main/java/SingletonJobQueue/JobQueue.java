@@ -36,7 +36,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
     synchronized public AbstractJob popFromQue() throws InterruptedException {
 //        getSingletonInstance();
         while (instance.isEmpty()) {
-            wait();
+            Thread.sleep(1000);
             System.out.println("Waiting in popFromQue");
         }
         System.out.println("Removedddddd");
