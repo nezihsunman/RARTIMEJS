@@ -1,31 +1,33 @@
 package main.java.Jobs;
 
+import main.java.executeStrategy.FindMaxExecudeStrategyInterface;
 import main.java.executeStrategy.NoSort;
 import main.java.executeStrategy.NormalFindMax;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
-
+    private ArrayList<Integer> list = new ArrayList<Integer>();
     private boolean status = false;
     //String uniqueID = UUID.randomUUID().toString();
 
+
+    @Override
+    public ArrayList<Integer> getList() {
+        return this.list;
+    }
 
     @Override
     public void run() {
 
     }
 
-    public FindMaxJob() {
-
-        Random random = new Random();
-        int randomSize = random.nextInt(10);
-        for (int i = 0; i < randomSize; i++) {
-            super.getList().add(random.nextInt(1000));
-        }
-        sortExecudeStrategyInterfaceBehaviour = new NoSort();
-        findMaxExecudeStrategyInterfaceBehaviour = new NormalFindMax();
+    public FindMaxJob(ArrayList<Integer> list) {
+        this.list=list;
+        super.sortExecudeStrategyInterfaceBehaviour = new NoSort();
+        super.findMaxExecudeStrategyInterfaceBehaviour = new NormalFindMax();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class FindMaxJob extends AbstractJob implements Runnable {
 
     @Override
     public int getSize() {
-        return super.getList().size();
+        return this.list.size();
     }
 
     /* public String getUniqueID() {
@@ -53,3 +55,4 @@ public class FindMaxJob extends AbstractJob implements Runnable {
         return String.format("ID" + ", Size: " + getSize() + ", Status: " + getStatus());
     }
 }
+

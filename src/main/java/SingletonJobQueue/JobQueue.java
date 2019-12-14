@@ -1,6 +1,6 @@
 package main.java.SingletonJobQueue;
 
-import main.java.AbstractJobFactory.AbstractJobFactory;
+import main.java.AbstractJobFactory.SimpleJobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 
@@ -28,7 +28,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
 
     synchronized public void addQue() throws InterruptedException {
 //        getSingletonInstance();
-        AbstractJobFactory jobFactory = new FindMaxJobFactory();
+        SimpleJobFactory jobFactory = new FindMaxJobFactory();
         instance.add(jobFactory.getJob());
         System.out.println("Added a Job to Singleton Priority Queue");
     }
