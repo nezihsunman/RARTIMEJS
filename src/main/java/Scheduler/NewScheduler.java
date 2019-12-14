@@ -11,7 +11,7 @@ import main.java.SingletonJobQueue.JobQueue;
 import java.util.ArrayList;
 //import main.java.Threads.ProducerConsumer;
 
-public class NewScheduler implements Observer, Runnable {
+public class NewScheduler extends Thread implements Observer {
     JobQueue queue = JobQueue.getSingletonInstance();
     AbstractJobFactory jf_max = new FindMaxJobFactory();
     private ArrayList<AbstractJob> tempJobList = new ArrayList<AbstractJob>();
@@ -26,24 +26,21 @@ public class NewScheduler implements Observer, Runnable {
     }
 
     public synchronized void consume() throws InterruptedException {
-        while (true) {
-            synchronized (this) {
-
-                Node node = cluster.getAvailableNode();
-                AbstractJob J = (AbstractJob) queue.remove();
-                node.registerObserver(this);
-                node.addJob(J);
-                node.solveProblem();
-                //addTempJoblist(J);
-                //System.out.println("---------------------" + sizeTempJobList());
-                J.setStatus(true);
-                System.out.println("Consumer consumed-" + J);
-                //Sleep
-                Thread.sleep(5000);
-
-            }
+        Node node = cluster.getAvailableNode();
+        if(!queue.isEmpty()) {
+            AbstractJob J = (AbstractJob) queue.remove();
+            node.registerObserver(this);
+            node.addJob(J);
+            //node.solveProblem();
+            //addTempJoblist(J);
+            //System.out.println("---------------------" + sizeTempJobList());
+            J.setStatus(true);
+            System.out.println("Consumer consumed-" + J);
+            //Sleep
+            System.out.println("consumeed");
+        }else {
+            System.out.println("queis empty");
         }
-
     }
 
     public synchronized void produce() throws InterruptedException {
@@ -133,7 +130,8 @@ public class NewScheduler implements Observer, Runnable {
     @Override
     public synchronized void run() {
         try {
-            this.produce();
+            while (true)
+                this.produce();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
