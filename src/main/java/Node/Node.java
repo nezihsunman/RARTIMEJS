@@ -55,6 +55,7 @@ public class Node implements Observable, Runnable {
             System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
             System.out.println("...Solving...");
             handedJob.setStatus(true);
+            System.out.println(handedJob.toString());
             removeJob(handedJob);
             setNodeStatus("Avaliable");
         }
