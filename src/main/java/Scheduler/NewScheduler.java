@@ -48,12 +48,11 @@ public class NewScheduler implements Observer{
             }
         });
 
-
-        producerThread.start();
         consumerThread.start();
-
-        producerThread.join();
+        producerThread.start();
         consumerThread.join();
+        producerThread.join();
+
     }
 
     public void consume() throws InterruptedException {

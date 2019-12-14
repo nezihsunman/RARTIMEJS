@@ -11,10 +11,19 @@ public class Node implements Observable, Runnable {
     int core;
     private Cluster c;
     private String status;
-    public ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
+    private ArrayList<AbstractJob> jobList = new ArrayList<AbstractJob>();
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
+    public boolean nodeAvailable() {
+        if(0<jobList.size()&& jobList.size()<core)
+            return true;
+        else if (jobList.size()==core)
+            return false;
+        else{
+            return false;
+        }
+    }
     public Node(int core) throws InterruptedException {
         this.core = core;
         this.status = "Available";
@@ -23,10 +32,9 @@ public class Node implements Observable, Runnable {
     //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         while (true) {
-            if (jobList.size() == 0) {
+            if (!this.nodeAvailable()) {
                 break;
             }
-
             // todo: This call stragty patern to hande the solition in try catch blog
             AbstractJob J = jobList.get(0);
             System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
@@ -93,5 +101,13 @@ public class Node implements Observable, Runnable {
     @Override
     public void run() {
 
+    }
+
+    public ArrayList<AbstractJob> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(ArrayList<AbstractJob> jobList) {
+        this.jobList = jobList;
     }
 }
