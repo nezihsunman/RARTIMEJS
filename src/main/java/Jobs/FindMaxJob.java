@@ -6,12 +6,13 @@ import main.java.executeStrategy.NormalFindMax;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.UUID;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
     //TODO will be replaced with enum
     private ArrayList<Integer> list = new ArrayList<Integer>();
     private boolean status = false;
-    //String uniqueID = UUID.randomUUID().toString();
+    String uniqueID = UUID.randomUUID().toString();
 
 
     @Override
@@ -46,13 +47,13 @@ public class FindMaxJob extends AbstractJob implements Runnable {
         return this.list.size();
     }
 
-    /* public String getUniqueID() {
+    public String getUniqueID() {
           return this.uniqueID;
-      }*/
+      }
 
     @Override
     public String toString() {
-        return String.format("ID" + ", Size: " + getSize() + ", Status: " + getStatus());
+        return String.format("ID: " + getUniqueID() + ", Size: " + getSize() + ", Status: " + getStatus());
     }
 }
 
