@@ -1,8 +1,6 @@
 package main.java.Node;
 
 import main.java.Jobs.AbstractJob;
-import main.java.Scheduler.NewScheduler;
-import main.java.Scheduler.Scheduler;
 
 import java.util.ArrayList;
 import java.util.Collections;
