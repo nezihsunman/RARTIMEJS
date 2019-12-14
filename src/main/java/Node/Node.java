@@ -33,6 +33,8 @@ public class Node implements Observable, Runnable {
 
             // todo: This call stragty patern to hande the solition in try catch blog
             AbstractJob handedJob = jobList.get(0);
+            handedJob.getFindMaxExecudeStrategyInterfaceBehaviour().executeFindMax(handedJob.getList());
+            handedJob.getSortExecudeStrategyInterfaceBehaviour().executeSort(handedJob.getList());
             System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
             System.out.println("...Solving...");
             handedJob.setStatus(true);
