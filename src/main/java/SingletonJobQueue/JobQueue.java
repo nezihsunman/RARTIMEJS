@@ -1,5 +1,7 @@
 package main.java.SingletonJobQueue;
 
+import main.java.AbstractJobFactory.AbstractJobFactory;
+import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 
 import java.util.PriorityQueue;

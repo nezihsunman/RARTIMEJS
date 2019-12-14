@@ -120,5 +120,6 @@ public class NewScheduler implements Observer{
             n.setNodeStatus("Busy");
         }
     }
+
 }
 
