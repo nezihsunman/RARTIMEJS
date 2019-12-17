@@ -18,6 +18,7 @@ public abstract class AbstractJob extends Thread implements Comparable<AbstractJ
     public abstract int getSize();
 
     public abstract ArrayList<Integer> getList();
+
     @Override
     //pop lowest priority first
     public int compareTo(AbstractJob j) {

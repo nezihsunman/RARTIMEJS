@@ -6,7 +6,7 @@ public class ProduceThread extends Thread {
     private NewScheduler s;
 
     public ProduceThread(NewScheduler scheduler) {
-      this.s=scheduler;
+        this.s = scheduler;
     }
 
     @Override

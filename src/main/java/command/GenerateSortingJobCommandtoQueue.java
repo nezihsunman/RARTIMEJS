@@ -1,6 +1,5 @@
 package main.java.command;
 
-import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.AbstractJobFactory.JobFactory;
 import main.java.AbstractJobFactory.SortingJobFactory;
 import main.java.Jobs.AbstractJob;
@@ -12,13 +11,13 @@ public class GenerateSortingJobCommandtoQueue implements Command {
     ArrayList<Integer> list;
 
     public GenerateSortingJobCommandtoQueue(ArrayList<Integer> list) {
-        this.list=list;
+        this.list = list;
     }
 
     @Override
     public void takeCommand() {
-        JobFactory factory=new SortingJobFactory();
-        AbstractJob job=factory.getJob(this.list);
+        JobFactory factory = new SortingJobFactory();
+        AbstractJob job = factory.getJob(this.list);
         JobQueue.getSingletonInstance().addQue(job);
 
     }

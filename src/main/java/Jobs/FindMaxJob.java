@@ -1,11 +1,9 @@
 package main.java.Jobs;
 
-import main.java.executeStrategy.FindMaxExecudeStrategyInterface;
 import main.java.executeStrategy.NoSort;
 import main.java.executeStrategy.NormalFindMax;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.UUID;
 
 public class FindMaxJob extends AbstractJob implements Runnable {
@@ -26,7 +24,7 @@ public class FindMaxJob extends AbstractJob implements Runnable {
     }
 
     public FindMaxJob(ArrayList<Integer> list) {
-        this.list=list;
+        this.list = list;
         super.sortExecudeStrategyInterfaceBehaviour = new NoSort();
         super.findMaxExecudeStrategyInterfaceBehaviour = new NormalFindMax();
     }
@@ -48,8 +46,8 @@ public class FindMaxJob extends AbstractJob implements Runnable {
     }
 
     public String getUniqueID() {
-          return this.uniqueID;
-      }
+        return this.uniqueID;
+    }
 
     @Override
     public String toString() {

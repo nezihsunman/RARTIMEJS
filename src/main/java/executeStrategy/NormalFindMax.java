@@ -9,11 +9,10 @@ public class NormalFindMax implements FindMaxExecudeStrategyInterface {
     @Override
     public int executeFindMax(ArrayList<Integer> list) {
         System.out.println("Solving in execute finmax");
-
         return calculateMax(list);
     }
 
-    private static int calculateMax(ArrayList<Integer> list) {
+    private int calculateMax(ArrayList<Integer> list) {
         int max;
         if (!list.isEmpty()) {
             max = list.get(0);

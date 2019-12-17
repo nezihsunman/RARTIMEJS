@@ -1,7 +1,6 @@
 package main.java.SingletonJobQueue;
 
 import main.java.Jobs.AbstractJob;
-import main.java.Thread.ConsumeThread;
 
 import java.util.PriorityQueue;
 
@@ -14,6 +13,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
     private JobQueue() {
 
     }
+
     public static JobQueue getSingletonInstance() {
         if (null == instance) {
             synchronized (JobQueue.class) {
@@ -27,7 +27,7 @@ public class JobQueue<J> extends PriorityQueue<J> {
 
     synchronized public void addQue(AbstractJob job) {
         getSingletonInstance().add(job);
-        System.out.println(ANSI_BLACK+"Added a Job to Singleton Priority Queue");
+        System.out.println(ANSI_BLACK + "Added a Job to Singleton Priority Queue");
     }
 
 }

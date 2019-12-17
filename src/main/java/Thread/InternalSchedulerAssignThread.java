@@ -6,7 +6,7 @@ public class InternalSchedulerAssignThread extends Thread {
     private NewScheduler s;
 
     public InternalSchedulerAssignThread(NewScheduler scheduler) {
-        this.s=scheduler;
+        this.s = scheduler;
     }
 
     @Override

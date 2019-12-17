@@ -9,7 +9,7 @@ public class BubbleSort implements SortExecudeStrategyInterface {
     public ArrayList<Integer> executeSort(ArrayList<Integer> list) {
         boolean sorted = false;
         int temp;
-        synchronized (this) {
+
             while (!sorted) {
                 sorted = true;
                 for (int i = 0; i < list.size() - 1; i++) {
@@ -21,7 +21,7 @@ public class BubbleSort implements SortExecudeStrategyInterface {
                     }
                 }
             }
-        }
+
         return list;
     }
 }

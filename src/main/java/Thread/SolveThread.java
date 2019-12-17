@@ -1,7 +1,6 @@
 package main.java.Thread;
 
 import main.java.Node.Node;
-import main.java.Scheduler.NewScheduler;
 
 public class SolveThread extends Thread {
     private Node node;
