@@ -1,8 +1,6 @@
 package main.java.Jobs;
 
-import main.java.executeStrategy.NoSort;
-import main.java.executeStrategy.NormalFindMax;
-import main.java.executeStrategy.SortExecudeStrategyInterface;
+import main.java.executeStrategy.*;
 
 import java.util.ArrayList;
 
@@ -13,8 +11,8 @@ public class SortingJob extends AbstractJob implements Runnable{
 
     public SortingJob(ArrayList<Integer> list) {
         this.list=list;
-        super.sortExecudeStrategyInterfaceBehaviour = new NoSort();
-        super.findMaxExecudeStrategyInterfaceBehaviour = new NormalFindMax();
+        super.sortExecudeStrategyInterfaceBehaviour = new BubbleSort();
+        super.findMaxExecudeStrategyInterfaceBehaviour = new NoFindMax();
     }
 
     @Override
