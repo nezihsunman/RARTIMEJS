@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class RecursiveFindMax implements FindMaxExecudeStrategyInterface {
 
     @Override
-    public int executeFindMax(ArrayList<Integer> list) {
+    public synchronized int executeFindMax(ArrayList<Integer> list) {
         return findMaxRec(list, list.size());
     }
 
 
-    public static int findMaxRec(ArrayList<Integer> list, int n) {
+    public synchronized static int findMaxRec(ArrayList<Integer> list, int n) {
         if (n == 1)
             return list.get(0);
 

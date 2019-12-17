@@ -22,11 +22,12 @@ public class Node implements Observable, Runnable {
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public Node(int core)  {
+    public Node(int core) {
         this.core = core;
         this.status = "Available";
-        System.out.println(ANSI_BLACK+"Node is created");
+        System.out.println(ANSI_BLACK + "Node is created");
     }
+
     public void nodeStartThread() {
         //threadNode();
         for (int i = 0; i < this.core; i++) {
@@ -40,27 +41,28 @@ public class Node implements Observable, Runnable {
 
     }
 
-    //Therad 3
     public synchronized void solveProblem() throws InterruptedException {
         solveThread();
     }
 
     public synchronized void solveProcess() throws InterruptedException {
         if (jobList.size() == 0) {
-            System.out.println(ANSI_RED+"job list is empty");
+            System.out.println(ANSI_RED + "job list is empty");
             notifyObservers();
 
         } else {
-            // todo: This call stragty patern to hande the solition in try catch blog
-            AbstractJob handedJob = jobList.get(0);
-            handedJob.getFindMaxExecudeStrategyInterfaceBehaviour().executeFindMax(handedJob.getList());
-            handedJob.getSortExecudeStrategyInterfaceBehaviour().executeSort(handedJob.getList());
-            System.out.println(ANSI_BLACK+"The Strategy Pattern will be here to solve the AbstractJob");
-            System.out.println(ANSI_RED+"...Solving...");
-            handedJob.setStatus(true);
-            System.out.println(ANSI_BLACK+handedJob.toString());
-            removeJob(handedJob);
-            setNodeStatus("Avaliable");
+            synchronized (this) {
+                AbstractJob handedJob = jobList.get(0);
+                System.out.println(ANSI_BLACK + "The Strategy Pattern will be here to solve the AbstractJob");
+                System.out.println(ANSI_RED + "...Solving...");
+                handedJob.getFindMaxExecudeStrategyInterfaceBehaviour().executeFindMax(handedJob.getList());
+                handedJob.getSortExecudeStrategyInterfaceBehaviour().executeSort(handedJob.getList());
+                System.out.println(ANSI_RED + "...Solved...");
+                handedJob.setStatus(true);
+                System.out.println(ANSI_BLACK + handedJob.toString());
+                removeJob(handedJob);
+                setNodeStatus("Avaliable");
+            }
         }
     }
 
@@ -78,7 +80,7 @@ public class Node implements Observable, Runnable {
     }
 
     public void addJob(AbstractJob J) {
-        System.out.println(ANSI_BLACK+"Node has a new Job in the Joblist");
+        System.out.println(ANSI_BLACK + "Node has a new Job in the Joblist");
         jobList.add(J);
         solveThread();
 
@@ -86,7 +88,6 @@ public class Node implements Observable, Runnable {
 
     void removeJob(AbstractJob J) {
         jobList.remove(J);
-//        notifyObservers();
     }
 
     public void setNodeStatus(String s) throws InterruptedException {

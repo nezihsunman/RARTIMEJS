@@ -6,7 +6,7 @@ public class BubbleSort implements SortExecudeStrategyInterface {
 
     //BubbleSort
     @Override
-    public ArrayList<Integer> executeSort(ArrayList<Integer> list) {
+    public synchronized ArrayList<Integer> executeSort(ArrayList<Integer> list) {
         boolean sorted = false;
         int temp;
         while(!sorted) {
