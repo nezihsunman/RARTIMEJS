@@ -86,7 +86,7 @@ public class Node implements Observable, Runnable {
 
     }
 
-    void removeJob(AbstractJob J) {
+    synchronized void removeJob(AbstractJob J) {
         jobList.remove(J);
     }
 

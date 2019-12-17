@@ -6,7 +6,7 @@ public class selectionSort implements SortExecudeStrategyInterface {
 
     //selection Sort
     @Override
-    public synchronized ArrayList<Integer> executeSort(ArrayList<Integer> list) {
+    public ArrayList<Integer> executeSort(ArrayList<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             int min = list.get(i);
             int minId = i;

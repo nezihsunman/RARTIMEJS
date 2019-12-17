@@ -10,7 +10,7 @@ public class RecursiveFindMax implements FindMaxExecudeStrategyInterface {
     }
 
 
-    public synchronized static int findMaxRec(ArrayList<Integer> list, int n) {
+    public static int findMaxRec(ArrayList<Integer> list, int n) {
         if (n == 1)
             return list.get(0);
 
