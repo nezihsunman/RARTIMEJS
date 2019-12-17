@@ -1,10 +1,11 @@
 package main.java.SingletonJobQueue;
 
-import main.java.AbstractJobFactory.SimpleJobFactory;
-import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
+import main.java.Thread.ConsumeThread;
 
 import java.util.PriorityQueue;
+
+import static test.java.CommandClient.ANSI_BLACK;
 
 public class JobQueue<J> extends PriorityQueue<J> {
 
@@ -26,13 +27,12 @@ public class JobQueue<J> extends PriorityQueue<J> {
         return instance;
     }
 
-    synchronized public void addQue() throws InterruptedException {
-//        getSingletonInstance();
-        SimpleJobFactory jobFactory = new FindMaxJobFactory();
-        instance.add(jobFactory.getJob());
-        System.out.println("Added a Job to Singleton Priority Queue");
+    synchronized public void addQue(AbstractJob job) {
+        getSingletonInstance().add(job);
+        System.out.println(ANSI_BLACK+"Added a Job to Singleton Priority Queue");
     }
 
+/*
     synchronized public AbstractJob popFromQue() throws InterruptedException {
 //        getSingletonInstance();
         while (instance.isEmpty()) {
@@ -41,6 +41,6 @@ public class JobQueue<J> extends PriorityQueue<J> {
         }
         System.out.println("Removedddddd");
         return instance.remove();
-    }
+    }*/
 }
 

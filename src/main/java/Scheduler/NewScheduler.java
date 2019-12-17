@@ -1,6 +1,6 @@
 package main.java.Scheduler;
 
-import main.java.AbstractJobFactory.SimpleJobFactory;
+import main.java.AbstractJobFactory.JobFactory;
 import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
@@ -8,23 +8,27 @@ import main.java.Node.Observer;
 import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.ArrayList;
+
+import static test.java.CommandClient.ANSI_BLACK;
+import static test.java.CommandClient.ANSI_RED;
 //import main.java.Threads.ProducerConsumer;
 
 public class NewScheduler extends Thread implements Observer {
-    JobQueue queue = JobQueue.getSingletonInstance();
-    SimpleJobFactory jf_max = new FindMaxJobFactory();
+
+    JobFactory jf_max = new FindMaxJobFactory();
     private static ArrayList<AbstractJob> tempJobList =new ArrayList<AbstractJob>();
     private static ArrayList<Node> NodeList;
     //capacity is 2 for easier demonstration.
     int capacity = 10;
 
-    public NewScheduler() throws InterruptedException {
+    public NewScheduler() {
 //        final ProducerConsumer pc = new ProducerConsumer();
         //threadInitialise();
-        System.out.println("NewSchuler is initialised");
+        System.out.println(ANSI_BLACK+"NewSchuler is initialised");
     }
 
     public synchronized void consume() throws InterruptedException {
+        JobQueue queue = JobQueue.getSingletonInstance();
         if (!queue.isEmpty()) {
             AbstractJob J = (AbstractJob) queue.remove();
             //node.registerObserver(this);
@@ -33,27 +37,27 @@ public class NewScheduler extends Thread implements Observer {
             this.addTempJoblist(J);
             //System.out.println("---------------------" + sizeTempJobList());
             //J.setStatus(true);
-            System.out.println("Took a job from Priority Queue and gave it to Scheduler.");
+            System.out.println(ANSI_BLACK+"Took a job from Priority Queue and gave it to Scheduler.");
 
         } else {
-            System.out.println("queis empty");
+            System.out.println(ANSI_RED+"queis empty");
         }
     }
 
     public synchronized void produce() throws InterruptedException {
-
+        JobQueue queue = JobQueue.getSingletonInstance();
         //producer waits while list is full
         if (queue.size() == capacity) {
-            System.out.println("Queue size is: " + queue.size());
-            System.out.println("Waiting... in Produce");
+            System.out.println(ANSI_BLACK+"Queue size is: " + queue.size());
+            System.out.println(ANSI_BLACK+"Waiting... in Produce");
 
-            System.out.println("Got notified");
-            System.out.println("List size is not equal to capacity anymore: " + queue.size());
-            System.out.println("Thread intreer");
+            System.out.println(ANSI_BLACK+"Got notified");
+            System.out.println(ANSI_BLACK+"List size is not equal to capacity anymore: " + queue.size());
+            System.out.println(ANSI_BLACK+"Thread intreer");
 
         } else {
-            AbstractJob J = jf_max.getJob();
-            System.out.println("Producer produced job: " + J.toString());
+            AbstractJob J = jf_max.getJob(null);
+            System.out.println(ANSI_BLACK+"Producer produced job: " + J.toString());
             queue.add(J);
             //notify();
             //and sleep
@@ -70,8 +74,8 @@ public class NewScheduler extends Thread implements Observer {
 
             }
                 n.addJob(removeTempJobList());
-                System.out.println("Temp Scheculer size is: " + this.sizeTempJobList());
-                System.out.println("Node Job capacity is: " + n.jobList.size());
+                System.out.println(ANSI_BLACK+"Temp Scheculer size is: " + this.sizeTempJobList());
+                System.out.println(ANSI_BLACK+"Node Job capacity is: " + n.jobList.size());
 
         }
 

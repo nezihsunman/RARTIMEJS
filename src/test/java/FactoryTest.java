@@ -3,10 +3,13 @@ package test.java;
 //import main.java.AbstractJobFactory.AbstractJobFactory;
 //import main.java.AbstractJobFactory.FindMaxJobFactory;
 //import main.java.Jobs.AbstractJob;
+import main.java.AbstractJobFactory.JobFactory;
+import main.java.AbstractJobFactory.FindMaxJobFactory;
+import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
-import main.java.FactoryMethod.*;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static test.java.CommandClient.ANSI_BLACK;
 
 
 //import main.java.AbstractJobFactory.SortingJobFactory;
@@ -28,10 +31,9 @@ public class FactoryTest {
         JobQueue q = JobQueue.getSingletonInstance();
 //        AbstractJobFactory jf_max = new FindMaxJobFactory();
 //        AbstractJob J = jf_max.getJob();
-
-        FindMaxJobFactory jf_max = new FindMaxJobFactory();
-        jf_max.getJob("FindMaxJob");
-        System.out.println("asd");
+        JobFactory jf_max = new FindMaxJobFactory();
+        AbstractJob job =jf_max.getJob(null);
+        System.out.println(ANSI_BLACK+"Job Generated");
     }
 
 

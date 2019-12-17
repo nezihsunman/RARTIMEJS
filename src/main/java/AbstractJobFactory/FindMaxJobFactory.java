@@ -1,23 +1,21 @@
 package main.java.AbstractJobFactory;
 
 import main.java.Jobs.AbstractJob;
+import main.java.Jobs.FindMaxJob;
 import main.java.Jobs.RandomFindMaxJob;
 
 import java.util.ArrayList;
 
-public class FindMaxJobFactory extends Thread implements SimpleJobFactory {
+public class FindMaxJobFactory extends Thread implements JobFactory {
     @Override
     public AbstractJob getJob(ArrayList<Integer> list) {
-        return null;
+        if (list == null) {
+            return new RandomFindMaxJob();
+        }
+        else {
+            return new FindMaxJob(list);
+        }
     }
 
-    @Override
-    public AbstractJob getJob() {
-        return new RandomFindMaxJob();
-    }
 
-    @Override
-    public ClassLoader getContextClassLoader() {
-        return super.getContextClassLoader();
-    }
 }
