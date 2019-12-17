@@ -1,7 +1,7 @@
 package main.java.Scheduler;
 
 import main.java.AbstractJobFactory.SimpleJobFactory;
-import main.java.AbstractJobFactory.FindMaxJobFactory;
+import main.java.AbstractJobFactory.RandomFindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
 import main.java.Node.Observer;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 //import main.java.Threads.ProducerConsumer;
 
 public class NewScheduler extends Thread implements Observer {
-    JobQueue queue = JobQueue.getSingletonInstance();
-    SimpleJobFactory jf_max = new FindMaxJobFactory();
+
+    SimpleJobFactory jf_max = new RandomFindMaxJobFactory();
     private static ArrayList<AbstractJob> tempJobList =new ArrayList<AbstractJob>();
     private static ArrayList<Node> NodeList;
     //capacity is 2 for easier demonstration.
@@ -25,6 +25,7 @@ public class NewScheduler extends Thread implements Observer {
     }
 
     public synchronized void consume() throws InterruptedException {
+        JobQueue queue = JobQueue.getSingletonInstance();
         if (!queue.isEmpty()) {
             AbstractJob J = (AbstractJob) queue.remove();
             //node.registerObserver(this);
@@ -41,7 +42,7 @@ public class NewScheduler extends Thread implements Observer {
     }
 
     public synchronized void produce() throws InterruptedException {
-
+        JobQueue queue = JobQueue.getSingletonInstance();
         //producer waits while list is full
         if (queue.size() == capacity) {
             System.out.println("Queue size is: " + queue.size());

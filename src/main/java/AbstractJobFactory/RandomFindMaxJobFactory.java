@@ -1,12 +1,11 @@
 package main.java.AbstractJobFactory;
 
 import main.java.Jobs.AbstractJob;
-import main.java.Jobs.RandomSortingJob;
+import main.java.Jobs.RandomFindMaxJob;
 
 import java.util.ArrayList;
 
-public class SortingJobFactory implements SimpleJobFactory {
-
+public class RandomFindMaxJobFactory extends Thread implements SimpleJobFactory {
     @Override
     public AbstractJob getJob(ArrayList<Integer> list) {
         return null;
@@ -14,6 +13,7 @@ public class SortingJobFactory implements SimpleJobFactory {
 
     @Override
     public AbstractJob getJob() {
-        return new RandomSortingJob();
+        return new RandomFindMaxJob();
     }
+
 }
