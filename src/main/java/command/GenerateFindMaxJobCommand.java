@@ -1,7 +1,7 @@
 package main.java.command;
 
 import main.java.AbstractJobFactory.GenerateFindMaxJobFactory;
-import main.java.AbstractJobFactory.SimpleJobFactory;
+import main.java.AbstractJobFactory.JobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
@@ -17,7 +17,7 @@ public class GenerateFindMaxJobCommand implements Command {
 
     @Override
     public void takeCommand() {
-        SimpleJobFactory factory=new GenerateFindMaxJobFactory();
+        JobFactory factory=new GenerateFindMaxJobFactory();
         AbstractJob job=factory.getJob(this.list);
         JobQueue.getSingletonInstance().addQue(job);
 

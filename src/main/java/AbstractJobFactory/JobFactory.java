@@ -4,7 +4,6 @@ import main.java.Jobs.AbstractJob;
 
 import java.util.ArrayList;
 
-public interface SimpleJobFactory {
-    AbstractJob getJob(); //Random
+public interface JobFactory {
     AbstractJob getJob(ArrayList<Integer> list);
 }

@@ -1,6 +1,6 @@
 package main.java.Scheduler;
 
-import main.java.AbstractJobFactory.SimpleJobFactory;
+import main.java.AbstractJobFactory.JobFactory;
 import main.java.AbstractJobFactory.RandomFindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class NewScheduler extends Thread implements Observer {
 
-    SimpleJobFactory jf_max = new RandomFindMaxJobFactory();
+    JobFactory jf_max = new RandomFindMaxJobFactory();
     private static ArrayList<AbstractJob> tempJobList =new ArrayList<AbstractJob>();
     private static ArrayList<Node> NodeList;
     //capacity is 2 for easier demonstration.
@@ -53,7 +53,7 @@ public class NewScheduler extends Thread implements Observer {
             System.out.println("Thread intreer");
 
         } else {
-            AbstractJob J = jf_max.getJob();
+            AbstractJob J = jf_max.getJob(null);
             System.out.println("Producer produced job: " + J.toString());
             queue.add(J);
             //notify();

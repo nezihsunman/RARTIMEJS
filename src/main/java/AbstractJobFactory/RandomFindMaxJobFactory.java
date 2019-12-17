@@ -5,15 +5,15 @@ import main.java.Jobs.RandomFindMaxJob;
 
 import java.util.ArrayList;
 
-public class RandomFindMaxJobFactory extends Thread implements SimpleJobFactory {
+public class RandomFindMaxJobFactory extends Thread implements JobFactory {
     @Override
     public AbstractJob getJob(ArrayList<Integer> list) {
-        return null;
+        if (list == null) {
+            return new RandomFindMaxJob();
+        }
+        else
+            return null;
     }
 
-    @Override
-    public AbstractJob getJob() {
-        return new RandomFindMaxJob();
-    }
 
 }

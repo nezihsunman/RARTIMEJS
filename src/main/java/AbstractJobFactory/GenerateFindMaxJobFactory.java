@@ -5,15 +5,10 @@ import main.java.Jobs.FindMaxJob;
 
 import java.util.ArrayList;
 
-public class GenerateFindMaxJobFactory implements SimpleJobFactory {
+public class GenerateFindMaxJobFactory implements JobFactory {
 
     @Override
     public AbstractJob getJob(ArrayList<Integer> list) {
         return new FindMaxJob(list);
-    }
-
-    @Override
-    public AbstractJob getJob() {
-        return null;
     }
 }

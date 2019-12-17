@@ -3,9 +3,10 @@ package test.java;
 //import main.java.AbstractJobFactory.AbstractJobFactory;
 //import main.java.AbstractJobFactory.FindMaxJobFactory;
 //import main.java.Jobs.AbstractJob;
+import main.java.AbstractJobFactory.GenerateFindMaxJobFactory;
+import main.java.AbstractJobFactory.JobFactory;
+import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
-import main.java.FactoryMethod.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 
@@ -28,10 +29,9 @@ public class FactoryTest {
         JobQueue q = JobQueue.getSingletonInstance();
 //        AbstractJobFactory jf_max = new FindMaxJobFactory();
 //        AbstractJob J = jf_max.getJob();
-
-        FindMaxJobFactory jf_max = new FindMaxJobFactory();
-        jf_max.getJob("FindMaxJob");
-        System.out.println("asd");
+        JobFactory jf_max = new GenerateFindMaxJobFactory();
+        AbstractJob job =jf_max.getJob(null);
+        System.out.println("Job Generated");
     }
 
 

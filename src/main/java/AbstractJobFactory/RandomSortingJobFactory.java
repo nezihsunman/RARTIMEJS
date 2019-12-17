@@ -5,15 +5,14 @@ import main.java.Jobs.RandomSortingJob;
 
 import java.util.ArrayList;
 
-public class RandomSortingJobFactory implements SimpleJobFactory {
+public class RandomSortingJobFactory implements JobFactory {
 
     @Override
     public AbstractJob getJob(ArrayList<Integer> list) {
-        return null;
+        if (list ==null) {
+            return new RandomSortingJob();
+        }
+        else return null;
     }
 
-    @Override
-    public AbstractJob getJob() {
-        return new RandomSortingJob();
-    }
 }
