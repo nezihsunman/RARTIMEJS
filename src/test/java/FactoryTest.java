@@ -4,8 +4,10 @@ import main.java.JobFactory.JobFactory;
 import main.java.JobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
+import org.junit.Assert;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static main.java.Gui.ANSI_BLACK;
 
 
@@ -24,8 +26,7 @@ public class FactoryTest {
         JobQueue q = JobQueue.getSingletonInstance();
         JobFactory jf_max = new FindMaxJobFactory();
         AbstractJob job =jf_max.getJob(null);
-        System.out.println(ANSI_BLACK+"Job Generated");
+        q.addQue(job);
+        assertEquals(1, q.size());
     }
-
-
 }
