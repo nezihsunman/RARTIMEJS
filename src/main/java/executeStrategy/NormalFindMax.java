@@ -8,6 +8,7 @@ public class NormalFindMax implements FindMaxExecudeStrategyInterface {
     @Override
     public int executeFindMax(ArrayList<Integer> list) {
         Integer i = Collections.max(list);
-        return  i;
+        System.out.println("Solved max of element and it is" + i);
+        return i;
     }
 }

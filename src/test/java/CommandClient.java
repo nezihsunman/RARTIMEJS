@@ -140,9 +140,10 @@ public class CommandClient {
             Scanner in = new Scanner(System.in);
             int coreNumber = in.nextInt();
             Node node = new Node(coreNumber);
-            System.out.println("Your unuqie id is equal to :");
-            int uniqueID = getUniqueId();
+            node.registerObserver(this.scheduler);
 
+            int uniqueID = getUniqueId();
+            System.out.println("Your unuqie id is equal to :"+ uniqueID);
             System.out.println("if you want to start server operation please enter 10");
 
             System.out.println("if you want to start server later please enter 11 end we will give you a unique id ");
