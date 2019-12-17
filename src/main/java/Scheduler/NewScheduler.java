@@ -18,7 +18,7 @@ public class NewScheduler extends Thread implements Observer {
     //capacity is 2 for easier demonstration.
     int capacity = 10;
 
-    public NewScheduler() throws InterruptedException {
+    public NewScheduler() {
 //        final ProducerConsumer pc = new ProducerConsumer();
         //threadInitialise();
         System.out.println("NewSchuler is initialised");

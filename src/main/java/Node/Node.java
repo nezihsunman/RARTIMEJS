@@ -19,7 +19,7 @@ public class Node implements Observable, Runnable {
     private final Set<Observer> mObservers = Collections.newSetFromMap(
             new ConcurrentHashMap<Observer, Boolean>(0));
 
-    public Node(int core) throws InterruptedException {
+    public Node(int core)  {
         this.core = core;
         this.status = "Available";
         System.out.println("Node is created");

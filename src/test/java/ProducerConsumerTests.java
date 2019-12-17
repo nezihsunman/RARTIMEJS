@@ -18,8 +18,8 @@ public class ProducerConsumerTests {
         ConsumeThread consumeThread= new ConsumeThread(s);
 
         ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-        exec.scheduleAtFixedRate(produceThread, 0, 1, TimeUnit.SECONDS);
-        exec.scheduleAtFixedRate(consumeThread, 0, 1, TimeUnit.SECONDS);
+        exec.scheduleAtFixedRate(produceThread, 0, 10, TimeUnit.SECONDS);
+        exec.scheduleAtFixedRate(consumeThread, 1, 10, TimeUnit.SECONDS);
         Node n = new Node(4);
         n.registerObserver(s);
         n.nodeStartThread();
@@ -27,7 +27,7 @@ public class ProducerConsumerTests {
         n1.registerObserver(s);
         n1.nodeStartThread();
        // n.solveProblem();
-        System.out.println("Test Finish");
+        System.out.println("Test START and Code Block is Finished");
 
     }
 
