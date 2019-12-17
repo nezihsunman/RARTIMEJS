@@ -2,11 +2,11 @@ package main.java.Thread;
 
 import main.java.Scheduler.NewScheduler;
 
-public class ConsumeThread  extends Thread{
+public class ConsumeThread extends Thread {
     private NewScheduler s;
 
     public ConsumeThread(NewScheduler scheduler) {
-        this.s=scheduler;
+        this.s = scheduler;
     }
 
     @Override

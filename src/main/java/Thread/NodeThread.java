@@ -2,7 +2,6 @@ package main.java.Thread;
 
 
 import main.java.Node.Node;
-import main.java.Scheduler.NewScheduler;
 
 public class NodeThread extends Thread {
     private Node node;

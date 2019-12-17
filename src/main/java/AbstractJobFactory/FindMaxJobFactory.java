@@ -11,8 +11,7 @@ public class FindMaxJobFactory extends Thread implements JobFactory {
     public AbstractJob getJob(ArrayList<Integer> list) {
         if (list == null) {
             return new RandomFindMaxJob();
-        }
-        else {
+        } else {
             return new FindMaxJob(list);
         }
     }

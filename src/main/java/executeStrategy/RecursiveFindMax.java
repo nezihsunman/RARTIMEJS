@@ -10,10 +10,10 @@ public class RecursiveFindMax implements FindMaxExecudeStrategyInterface {
     }
 
 
-    public static int findMaxRec(ArrayList<Integer> list, int n) {
+    public int findMaxRec(ArrayList<Integer> list, int n) {
         if (n == 1)
             return list.get(0);
 
-        return Math.max(list.get(n - 1 ), findMaxRec(list, n - 1));
+        return Math.max(list.get(n - 1), findMaxRec(list, n - 1));
     }
 }

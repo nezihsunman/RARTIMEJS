@@ -1,16 +1,17 @@
 package main.java.Jobs;
 
-import main.java.executeStrategy.*;
+import main.java.executeStrategy.BubbleSort;
+import main.java.executeStrategy.NoFindMax;
 
 import java.util.ArrayList;
 
-public class SortingJob extends AbstractJob implements Runnable{
+public class SortingJob extends AbstractJob implements Runnable {
     private boolean status = false;
     //String uniqueID = UUID.randomUUID().toString();
     private ArrayList<Integer> list = new ArrayList<Integer>();
 
     public SortingJob(ArrayList<Integer> list) {
-        this.list=list;
+        this.list = list;
         super.sortExecudeStrategyInterfaceBehaviour = new BubbleSort();
         super.findMaxExecudeStrategyInterfaceBehaviour = new NoFindMax();
     }
@@ -19,10 +20,12 @@ public class SortingJob extends AbstractJob implements Runnable{
     public ArrayList<Integer> getList() {
         return this.list;
     }
+
     @Override
     public void run() {
 
     }
+
     @Override
     public boolean getStatus() {
         return status;

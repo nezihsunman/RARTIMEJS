@@ -1,7 +1,6 @@
 package main.java.SingletonJobQueue;
 
 import main.java.Jobs.AbstractJob;
-import main.java.Thread.ConsumeThread;
 
 import java.util.PriorityQueue;
 
@@ -10,7 +9,6 @@ import static test.java.CommandClient.ANSI_BLACK;
 public class JobQueue<J> extends PriorityQueue<J> {
 
     private static JobQueue<AbstractJob> instance = new JobQueue<AbstractJob>();
-
 
     private JobQueue() {
 
@@ -29,18 +27,8 @@ public class JobQueue<J> extends PriorityQueue<J> {
 
     synchronized public void addQue(AbstractJob job) {
         getSingletonInstance().add(job);
-        System.out.println(ANSI_BLACK+"Added a Job to Singleton Priority Queue");
+        System.out.println(ANSI_BLACK + "Added a Job to Singleton Priority Queue");
     }
 
-/*
-    synchronized public AbstractJob popFromQue() throws InterruptedException {
-//        getSingletonInstance();
-        while (instance.isEmpty()) {
-            Thread.sleep(1000);
-            System.out.println("Waiting in popFromQue");
-        }
-        System.out.println("Removedddddd");
-        return instance.remove();
-    }*/
 }
 
