@@ -32,7 +32,7 @@ public class CommandClient {
             if (value.equals("1")) {
                 System.out.println("If you want to generate findMaxJob please Enter 1");
                 System.out.println("If you want to generate sortingJob please Enter 2");
-                System.out.println("Pleaseeee enterrr Valueee");
+                System.out.println("Pleaseeee enterrr Valueee for JOB Type");
                 String inValue = in.nextLine();
                 if (inValue.equals("1")) {
                     takeArraylist();
