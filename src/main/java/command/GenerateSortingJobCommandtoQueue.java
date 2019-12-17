@@ -1,23 +1,23 @@
 package main.java.command;
 
-import main.java.AbstractJobFactory.GenerateFindMaxJobFactory;
+import main.java.AbstractJobFactory.FindMaxJobFactory;
 import main.java.AbstractJobFactory.JobFactory;
+import main.java.AbstractJobFactory.SortingJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.ArrayList;
 
-public class GenerateFindMaxJobCommand implements Command {
-    AbstractJob abstractJob;
+public class GenerateSortingJobCommandtoQueue implements Command {
     ArrayList<Integer> list;
 
-    public GenerateFindMaxJobCommand(ArrayList<Integer> list) {
+    public GenerateSortingJobCommandtoQueue(ArrayList<Integer> list) {
         this.list=list;
     }
 
     @Override
     public void takeCommand() {
-        JobFactory factory=new GenerateFindMaxJobFactory();
+        JobFactory factory=new SortingJobFactory();
         AbstractJob job=factory.getJob(this.list);
         JobQueue.getSingletonInstance().addQue(job);
 

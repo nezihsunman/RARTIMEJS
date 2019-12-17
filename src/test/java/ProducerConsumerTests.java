@@ -26,7 +26,7 @@ public class ProducerConsumerTests {
         Node n1 = new Node(4);
         n1.registerObserver(s);
         n1.nodeStartThread();
-       // n.solveProblem();
+
         System.out.println("Test START and Code Block is Finished");
 
     }

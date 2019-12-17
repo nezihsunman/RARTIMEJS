@@ -12,6 +12,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static test.java.CommandClient.ANSI_BLACK;
+import static test.java.CommandClient.ANSI_RED;
+
 public class Node implements Observable, Runnable {
     int core;
     private String status;
@@ -22,7 +25,7 @@ public class Node implements Observable, Runnable {
     public Node(int core)  {
         this.core = core;
         this.status = "Available";
-        System.out.println("Node is created");
+        System.out.println(ANSI_BLACK+"Node is created");
     }
     public void nodeStartThread() {
         //threadNode();
@@ -44,7 +47,7 @@ public class Node implements Observable, Runnable {
 
     public synchronized void solveProcess() throws InterruptedException {
         if (jobList.size() == 0) {
-            System.out.println("job list is empty");
+            System.out.println(ANSI_RED+"job list is empty");
             notifyObservers();
 
         } else {
@@ -52,10 +55,10 @@ public class Node implements Observable, Runnable {
             AbstractJob handedJob = jobList.get(0);
             handedJob.getFindMaxExecudeStrategyInterfaceBehaviour().executeFindMax(handedJob.getList());
             handedJob.getSortExecudeStrategyInterfaceBehaviour().executeSort(handedJob.getList());
-            System.out.println("The Strategy Pattern will be here to solve the AbstractJob");
-            System.out.println("...Solving...");
+            System.out.println(ANSI_BLACK+"The Strategy Pattern will be here to solve the AbstractJob");
+            System.out.println(ANSI_RED+"...Solving...");
             handedJob.setStatus(true);
-            System.out.println(handedJob.toString());
+            System.out.println(ANSI_BLACK+handedJob.toString());
             removeJob(handedJob);
             setNodeStatus("Avaliable");
         }
@@ -75,7 +78,7 @@ public class Node implements Observable, Runnable {
     }
 
     public void addJob(AbstractJob J) {
-        System.out.println("Node has a new Job in the Joblist");
+        System.out.println(ANSI_BLACK+"Node has a new Job in the Joblist");
         jobList.add(J);
         solveThread();
 
