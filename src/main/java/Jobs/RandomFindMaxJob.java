@@ -1,8 +1,6 @@
 package main.java.Jobs;
 
-import main.java.executeStrategy.NoSort;
-import main.java.executeStrategy.NormalFindMax;
-import main.java.executeStrategy.RecursiveFindMax;
+import main.java.executeStrategy.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +25,7 @@ public class RandomFindMaxJob extends AbstractJob implements Runnable {
         for (int i = 0; i < randomSize; i++) {
             list.add(random.nextInt(1000));
         }
-        sortExecudeStrategyInterfaceBehaviour = new NoSort();
+        sortExecudeStrategyInterfaceBehaviour = new SelectionSort();
 
         findMaxExecudeStrategyInterfaceBehaviour = new RecursiveFindMax();
     }

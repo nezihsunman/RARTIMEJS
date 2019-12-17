@@ -21,7 +21,7 @@ public class BubbleSort implements SortExecudeStrategyInterface {
                     }
                 }
             }
-
+        System.out.println("Bouble Sorted list");
         return list;
     }
 }

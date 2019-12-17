@@ -2,7 +2,7 @@ package main.java.executeStrategy;
 
 import java.util.ArrayList;
 
-public class selectionSort implements SortExecudeStrategyInterface {
+public class SelectionSort implements SortExecudeStrategyInterface {
 
     //selection Sort
     @Override
@@ -21,7 +21,7 @@ public class selectionSort implements SortExecudeStrategyInterface {
             list.set(i, min);
             list.set(minId, temp);
         }
-
+        System.out.println("Selection Sort is Finished");
         return list;
     }
 }
