@@ -1,6 +1,7 @@
 package main.java.SingletonJobQueue;
 
 import main.java.Jobs.AbstractJob;
+import main.java.Thread.ConsumeThread;
 
 import java.util.PriorityQueue;
 
