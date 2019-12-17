@@ -1,7 +1,7 @@
 package main.java.command;
 
-import main.java.AbstractJobFactory.FindMaxJobFactory;
-import main.java.AbstractJobFactory.JobFactory;
+import main.java.JobFactory.FindMaxJobFactory;
+import main.java.JobFactory.JobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 

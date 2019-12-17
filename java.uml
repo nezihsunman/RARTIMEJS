@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.java</OriginalElement>
+  <nodes>
+    <node x="500.8741581824522" y="502.909567496723">main.java.executeStrategy</node>
+    <node x="543.1796247357295" y="728.0">main.java.SingletonJobQueue</node>
+    <node x="98.35317124735718" y="976.0">main.java.Thread</node>
+    <node x="31.811903922950535" y="79.0">main.java.Gui</node>
+    <node x="231.2885600187926" y="877.0">main.java.Scheduler</node>
+    <node x="364.17962473572936" y="728.0">main.java.JobFactory</node>
+    <node x="119.5" y="728.0">main.java.Node</node>
+    <node x="295.86563917852067" y="500.71690694626454">main.java.Jobs</node>
+    <node x="212.9236111111111" y="1095.0">main.java.command</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.java.Jobs" target="main.java.Jobs">
+      <point x="-52.199999999999996" y="14.5" />
+      <point x="307.2226509740646" y="594.1730013106157" />
+      <point x="281.4226509740646" y="594.1730013106157" />
+      <point x="281.4226509740646" y="559.6730013106157" />
+      <point x="-58.0" y="-0.0" />
+    </edge>
+    <edge source="main.java.Scheduler" target="main.java.Jobs">
+      <point x="0.0" y="-14.5" />
+      <point x="307.2885600187926" y="857.0" />
+      <point x="305.8794691097017" y="857.0" />
+      <point x="305.8794691097017" y="688.0" />
+      <point x="355.0119039229505" y="688.0" />
+      <point x="-5.800000000000011" y="14.5" />
+    </edge>
+    <edge source="main.java.Thread" target="main.java.Scheduler">
+      <point x="40.625" y="-14.5" />
+      <point x="203.97817124735718" y="946.0" />
+      <point x="250.2885600187926" y="946.0" />
+      <point x="-57.0" y="14.5" />
+    </edge>
+    <edge source="main.java.Gui" target="main.java.Thread">
+      <point x="-57.75" y="244.5" />
+      <point x="89.56190392295053" y="698.0" />
+      <point x="58.0" y="698.0" />
+      <point x="58.0" y="956.0" />
+      <point x="106.47817124735718" y="956.0" />
+      <point x="-56.875" y="-14.5" />
+    </edge>
+    <edge source="main.java.Gui" target="main.java.Scheduler">
+      <point x="57.75" y="244.5" />
+      <point x="205.06190392295053" y="648.0" />
+      <point x="256.0637332628612" y="648.0" />
+      <point x="256.0637332628612" y="837.0" />
+      <point x="265.8340145642471" y="837.0" />
+      <point x="-41.45454545454544" y="-14.5" />
+    </edge>
+    <edge source="main.java.Scheduler" target="main.java.Gui">
+      <point x="-27.636363636363626" y="-14.5" />
+      <point x="279.652196382429" y="827.0" />
+      <point x="267.0637332628612" y="827.0" />
+      <point x="267.0637332628612" y="638.0" />
+      <point x="221.56190392295053" y="638.0" />
+      <point x="74.25" y="244.5" />
+    </edge>
+    <edge source="main.java.SingletonJobQueue" target="main.java.Jobs">
+      <point x="5.6843418860808015E-14" y="-14.5" />
+      <point x="647.6796247357295" y="608.0" />
+      <point x="389.81190392295053" y="608.0" />
+      <point x="29.0" y="14.5" />
+    </edge>
+    <edge source="main.java.Gui" target="main.java.Node">
+      <point x="41.25" y="244.5" />
+      <point x="188.56190392295053" y="708.0" />
+      <point x="184.75" y="708.0" />
+      <point x="7.25" y="-14.5" />
+    </edge>
+    <edge source="main.java.Jobs" target="main.java.executeStrategy">
+      <point x="-38.66666666666663" y="-14.5" />
+      <point x="329.0915020007138" y="348.52162516382674" />
+      <point x="390.2811044471968" y="351.3001310615987" />
+      <point x="-65.0" y="14.5" />
+    </edge>
+    <edge source="main.java.Gui" target="main.java.command">
+      <point x="-107.25" y="244.5" />
+      <point x="40.061903922950535" y="668.0" />
+      <point x="25.0" y="668.0" />
+      <point x="25.0" y="1075.0" />
+      <point x="218.63194444444446" y="1075.0" />
+      <point x="-62.79166666666663" y="-14.5" />
+    </edge>
+    <edge source="main.java.Node" target="main.java.Thread">
+      <point x="25.77777777777777" y="14.5" />
+      <point x="203.27777777777777" y="857.0" />
+      <point x="200.44444444444446" y="857.0" />
+      <point x="200.44444444444446" y="936.0" />
+      <point x="187.72817124735718" y="936.0" />
+      <point x="24.375" y="-14.5" />
+    </edge>
+    <edge source="main.java.command" target="main.java.SingletonJobQueue">
+      <point x="51.375" y="-14.5" />
+      <point x="332.7986111111111" y="1065.0" />
+      <point x="699.9296247357295" y="1065.0" />
+      <point x="52.25000000000006" y="14.5" />
+    </edge>
+    <edge source="main.java.Scheduler" target="main.java.JobFactory">
+      <point x="41.45454545454544" y="-14.5" />
+      <point x="348.743105473338" y="837.0" />
+      <point x="384.05462473572936" y="837.0" />
+      <point x="-59.625" y="14.5" />
+    </edge>
+    <edge source="main.java.command" target="main.java.Scheduler">
+      <point x="5.708333333333371" y="-14.5" />
+      <point x="287.13194444444446" y="1025.0" />
+      <point x="334.2961005402865" y="1025.0" />
+      <point x="334.2961005402865" y="956.0" />
+      <point x="326.2885600187926" y="956.0" />
+      <point x="19.0" y="14.5" />
+    </edge>
+    <edge source="main.java.Scheduler" target="main.java.Node">
+      <point x="-55.27272727272725" y="-14.5" />
+      <point x="252.01583274606534" y="847.0" />
+      <point x="229.05555555555554" y="847.0" />
+      <point x="51.55555555555554" y="14.5" />
+    </edge>
+    <edge source="main.java.SingletonJobQueue" target="main.java.Gui">
+      <point x="-69.66666666666663" y="-14.5" />
+      <point x="578.0129580690627" y="618.0" />
+      <point x="254.56190392295053" y="618.0" />
+      <point x="107.25" y="244.5" />
+    </edge>
+    <edge source="main.java.Thread" target="main.java.Node">
+      <point x="-24.375" y="-14.5" />
+      <point x="138.97817124735718" y="946.0" />
+      <point x="151.24906918017382" y="946.0" />
+      <point x="151.24906918017382" y="847.0" />
+      <point x="164.61111111111111" y="847.0" />
+      <point x="-12.888888888888886" y="14.5" />
+    </edge>
+    <edge source="main.java.Node" target="main.java.Jobs">
+      <point x="21.75" y="-14.5" />
+      <point x="199.25" y="658.0" />
+      <point x="320.2119039229505" y="658.0" />
+      <point x="-40.60000000000002" y="14.5" />
+    </edge>
+    <edge source="main.java.Node" target="main.java.Gui">
+      <point x="-50.75" y="-14.5" />
+      <point x="126.75" y="708.0" />
+      <point x="122.56190392295053" y="708.0" />
+      <point x="-24.75" y="244.5" />
+    </edge>
+    <edge source="main.java.Scheduler" target="main.java.SingletonJobQueue">
+      <point x="69.09090909090912" y="-14.5" />
+      <point x="376.37946910970174" y="857.0" />
+      <point x="595.4296247357295" y="857.0" />
+      <point x="-52.25" y="14.5" />
+    </edge>
+    <edge source="main.java.command" target="main.java.Thread">
+      <point x="-28.54166666666663" y="-14.5" />
+      <point x="252.88194444444446" y="1045.0" />
+      <point x="120.01983791402384" y="1045.0" />
+      <point x="-43.33333333333334" y="14.5" />
+    </edge>
+    <edge source="main.java.command" target="main.java.Jobs">
+      <point x="62.791666666666686" y="-14.5" />
+      <point x="344.21527777777777" y="1075.0" />
+      <point x="762.6796247357295" y="1075.0" />
+      <point x="762.6796247357295" y="588.0" />
+      <point x="413.0119039229505" y="588.0" />
+      <point x="52.19999999999999" y="14.5" />
+    </edge>
+    <edge source="main.java.Node" target="main.java.Node">
+      <point x="-25.77777777777777" y="14.5" />
+      <point x="151.72222222222223" y="797.0" />
+      <point x="79.5" y="797.0" />
+      <point x="79.5" y="732.8333333333333" />
+      <point x="-58.0" y="-9.666666666666686" />
+    </edge>
+    <edge source="main.java.command" target="main.java.JobFactory">
+      <point x="39.958333333333314" y="-14.5" />
+      <point x="321.3819444444444" y="1055.0" />
+      <point x="498.18690392295053" y="1055.0" />
+      <point x="498.18690392295053" y="847.0" />
+      <point x="503.30462473572936" y="847.0" />
+      <point x="59.625" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="684.2989140106638" y="704.560943643512" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

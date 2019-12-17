@@ -1,4 +1,4 @@
-package main.java.AbstractJobFactory;
+package main.java.JobFactory;
 
 import main.java.Jobs.AbstractJob;
 import main.java.Jobs.FindMaxJob;

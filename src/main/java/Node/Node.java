@@ -12,8 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static test.java.CommandClient.ANSI_BLACK;
-import static test.java.CommandClient.ANSI_RED;
+import static main.java.Gui.ANSI_BLACK;
+import static main.java.Gui.ANSI_RED;
 
 public class Node implements Observable, Runnable {
     int core;

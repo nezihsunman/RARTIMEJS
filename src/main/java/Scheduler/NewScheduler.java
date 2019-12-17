@@ -1,7 +1,7 @@
 package main.java.Scheduler;
 
-import main.java.AbstractJobFactory.FindMaxJobFactory;
-import main.java.AbstractJobFactory.JobFactory;
+import main.java.JobFactory.FindMaxJobFactory;
+import main.java.JobFactory.JobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.Node.Node;
 import main.java.Node.Observer;
@@ -9,8 +9,8 @@ import main.java.SingletonJobQueue.JobQueue;
 
 import java.util.ArrayList;
 
-import static test.java.CommandClient.ANSI_BLACK;
-import static test.java.CommandClient.ANSI_RED;
+import static main.java.Gui.ANSI_BLACK;
+import static main.java.Gui.ANSI_RED;
 //import main.java.Threads.ProducerConsumer;
 
 public class NewScheduler extends Thread implements Observer {
