@@ -20,7 +20,8 @@ public class CommandClient {
     static ArrayList<Integer> list = new ArrayList<Integer>();
     private static int uniqueIdforNodeOperation = 0;
     private static ArrayList<Node> nodeList = new ArrayList<Node>();
-    NewScheduler scheduler = new NewScheduler();
+    private NewScheduler scheduler = new NewScheduler();
+    private Command producerCommand;
     public static void main(String args[]) {
         CommandClient commandClient=new CommandClient();
         commandClient.main();
@@ -37,35 +38,42 @@ public class CommandClient {
             System.out.println(ANSI_BLUE + "For Start the nodeServer with already generated please enter 4");
             System.out.println(ANSI_BLUE + "For Stop the nodeServer with already generated please enter 5");
             System.out.println(ANSI_BLUE + "For Start Random Generated Test Job to Queue from scheduler please enter 6");
-            System.out.println(ANSI_BLUE + "For Start consume from Queue from scheduler please enter 7");
+            System.out.println(ANSI_BLUE + "For Stop Random Generated Test Job to Queue from scheduler please enter 6");
+            System.out.println(ANSI_BLUE + "For Start consume from Queue from scheduler please enter 8");
             System.out.println(ANSI_BLUE + "For Exit please enter * ");
             System.out.println(ANSI_BLUE + "Please enter Value");
             String value = in.nextLine();
 
             if (value.equals("1")) {
-                generateJob();
+                this.generateJob();
             }
             if (value.equals("2")) {
                 this.generateTest();
             }
             if (value.equals("3")) {
-                createNodeWithSpesificCore();
+                this.createNodeWithSpesificCore();
             }
             if (value.equals("4")) {
-                startNodeServer();
+                this.startNodeServer();
 
             }
             if (value.equals("5")) {
-                stopNodeServer();
+                this.stopNodeServer();
             }
             if (value.equals("6")) {
-                Command command=new ProducerCommand(this.scheduler);
-                command.takeCommand();
+                producerCommand=new ProducerCommand(this.scheduler);
+                producerCommand.takeCommand();
             }
             if (value.equals("7")) {
+                StopCommand stopCommand= (StopCommand) producerCommand;
+                stopCommand.stopCommand();
+            }
+            if (value.equals("8")) {
                 Command command=new ConsumerCommand(this.scheduler);
                 command.takeCommand();
             }
+
+
             if (value.equals("*")) {
                 break;
             }
