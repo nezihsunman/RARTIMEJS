@@ -4,7 +4,7 @@ import main.java.Jobs.AbstractJob;
 
 import java.util.PriorityQueue;
 
-import static test.java.CommandClient.ANSI_BLACK;
+import static main.java.Gui.ANSI_BLACK;
 
 public class JobQueue<J> extends PriorityQueue<J> {
 

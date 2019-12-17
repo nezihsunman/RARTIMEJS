@@ -1,12 +1,12 @@
 package test.java;
 
-import main.java.AbstractJobFactory.JobFactory;
-import main.java.AbstractJobFactory.FindMaxJobFactory;
+import main.java.JobFactory.JobFactory;
+import main.java.JobFactory.FindMaxJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 import org.junit.Test;
 
-import static test.java.CommandClient.ANSI_BLACK;
+import static main.java.Gui.ANSI_BLACK;
 
 
 //import main.java.AbstractJobFactory.SortingJobFactory;

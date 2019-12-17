@@ -1,7 +1,7 @@
 package main.java.command;
 
-import main.java.AbstractJobFactory.JobFactory;
-import main.java.AbstractJobFactory.SortingJobFactory;
+import main.java.JobFactory.JobFactory;
+import main.java.JobFactory.SortingJobFactory;
 import main.java.Jobs.AbstractJob;
 import main.java.SingletonJobQueue.JobQueue;
 

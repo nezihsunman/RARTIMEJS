@@ -1,4 +1,4 @@
-package test.java;
+package main.java;
 
 import main.java.Node.Node;
 import main.java.Scheduler.NewScheduler;
@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class CommandClient {
+public class Gui{
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -24,11 +24,13 @@ public class CommandClient {
     private Command producerCommand;
 
     public static void main(String args[]) {
-        CommandClient commandClient = new CommandClient();
-        commandClient.main();
+        Gui gui=new Gui();
+    }
+    public Gui() {
+        run();
     }
 
-    public void main() {
+    public void run() {
         Scanner in = new Scanner(System.in);
 
         while (true) {
