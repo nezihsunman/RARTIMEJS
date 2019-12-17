@@ -145,8 +145,7 @@ public class CommandClient {
             int uniqueID = getUniqueId();
             System.out.println("Your unuqie id is equal to :"+ uniqueID);
             System.out.println("if you want to start server operation please enter 10");
-
-            System.out.println("if you want to start server later please enter 11 end we will give you a unique id ");
+            System.out.println("if you want to start server later please go main page end enter 4 with a unique id ");
             int serverOp = -1;
             try {
                 serverOp = in.nextInt();
@@ -159,11 +158,8 @@ public class CommandClient {
             }
 
             System.out.println(uniqueID);
-            if (serverOp == 11) {
+            nodeList.add(uniqueID, node);
 
-                nodeList.add(uniqueIdforNodeOperation, node);
-
-            }
         } catch (Exception e) {
             System.out.println("Please enter number");
         }
@@ -183,7 +179,7 @@ public class CommandClient {
             }
 
         } catch (Exception e) {
-            System.out.println("please enter true value");
+            System.out.println("!!!!!!!!!Please enter Correct ID value!!!!!!!!!!!!");
         }
     }
 
